@@ -137,6 +137,10 @@ section.result{display:grid;gap:22px;padding-block:0 22px}
 .top-right{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
 .donate{display:inline-flex;align-items:center;gap:8px;text-decoration:none;color:var(--ink);font-weight:700;font-size:14px}
 .donate::before{content:"";width:14px;height:14px;background:var(--gold-fill);clip-path:polygon(50% 0,100% 42%,72% 100%,22% 92%,0 38%)}
+.donate-foot{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+.kofi{display:inline-flex;align-items:center;gap:8px;background:#FFFFFF;color:#202020;border-radius:999px;padding:5px 14px 5px 10px;text-decoration:none;font-weight:700;font-size:14px;text-shadow:none;box-shadow:0 0 0 2px var(--frame-out)}
+.kofi:hover{background:#FFF4EE}
+.kofi img{display:block;width:22px;height:auto}
 footer{padding-block:4px 36px;font-size:13px;color:var(--muted);display:grid;gap:6px}
 footer p{margin:0;max-width:80ch}
 </style>
@@ -212,7 +216,7 @@ footer p{margin:0;max-width:80ch}
   <footer>
     <p data-t="how"></p>
     <p data-t="credits"></p>
-    <p id="donate-foot" hidden><span data-t="donateNote"></span> <a id="donate-link" href="#" target="_blank" rel="noopener"></a></p>
+    <p id="donate-foot" class="donate-foot" hidden><span data-t="donateNote"></span> <a id="donate-link" class="kofi" href="#" target="_blank" rel="noopener"><img src="img/kofi-cup.png" alt="Ko-fi" width="22" height="18"><span id="donate-text"></span></a></p>
   </footer>
 </div>
 
@@ -624,7 +628,7 @@ function selectPath(){ const r = document.createRange(); r.selectNodeContents($(
 
 if (CONFIG.donateUrl) {
   $("donate").href = $("donate-link").href = CONFIG.donateUrl;
-  $("donate-link").textContent = CONFIG.donateUrl.replace(/^https?:\/\//, "");
+  $("donate-text").textContent = CONFIG.donateUrl.replace(/^https?:\/\//, "");
   $("donate").hidden = $("donate-foot").hidden = false;
 }
 renderStatic();
