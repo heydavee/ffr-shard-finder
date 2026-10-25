@@ -71,7 +71,6 @@ section.result{display:grid;gap:22px;padding-block:0 22px}
 .files button[aria-pressed="true"]{border-color:var(--frame)}
 .files button[aria-pressed="true"]::before{content:"▶";color:var(--gold);font-size:11px}
 .files button small{color:var(--muted);font-family:var(--mono);font-size:12px}
-.example{background:var(--part-soft);border:1px solid var(--part);color:var(--part);border-radius:6px;padding:3px 12px;font-size:13px;font-weight:700}
 .files .meta{margin:0}
 
 .summary{display:grid;grid-template-columns:auto 1fr;gap:32px;align-items:end}
@@ -297,7 +296,7 @@ de:{
   dropTitle:"GameSaveData*.sav hierher ziehen", dropSub:"oder klicken, um Dateien auszuwählen",
   privacy:"Die Datei verlässt deinen Browser nicht.",
   locations:"Fundorte", onlyMissing:"Nur Orte mit fehlenden Shards",
-  example:"Beispiel-Spielstand", exampleNote:"Beispiel: Kapitel 3, 38 Shards",
+  emptyNote:"Noch kein Spielstand geladen", emptyList:"Lade oben deinen Spielstand, um deinen Fortschritt zu sehen.",
   of:"von", saved:"gespeichert", playtime:"Spielzeit",
   ch:"Kap.", chapter:"Kapitel", all:"alle",
   st_ok:"komplett", st_part:"teilweise", st_miss:"fehlt", st_idle:"nicht betreten",
@@ -325,7 +324,7 @@ en:{
   dropTitle:"Drop GameSaveData*.sav here", dropSub:"or click to choose files",
   privacy:"Your file never leaves your browser.",
   locations:"Locations", onlyMissing:"Only locations with missing shards",
-  example:"Example save", exampleNote:"Example: chapter 3, 38 shards",
+  emptyNote:"No save loaded yet", emptyList:"Drop your save above to see your progress.",
   of:"of", saved:"saved", playtime:"play time",
   ch:"Ch.", chapter:"Chapter", all:"all",
   st_ok:"complete", st_part:"partial", st_miss:"missing", st_idle:"not visited",
@@ -452,20 +451,10 @@ function evaluate(save){
 }
 
 /* ---------------- State ---------------- */
-function exampleResult(){
-  const got = new Map();
-  for (const [ch, keys] of LOC) {
-    if (ch > 3) continue;
-    for (const [m, u] of keys) {
-      if (m === 3110) continue;          // Water Shrine not reached yet
-      if (m === 2060 && u === 6) { if (!got.has(m)) got.set(m, new Set()); continue; }
-      if (!got.has(m)) got.set(m, new Set());
-      got.get(m).add(u);
-    }
-  }
-  return {name: null, got, playTime: 50728, savedTicks: 0, example: true};
+function emptyResult(){
+  return {name: null, got: new Map(), playTime: 0, savedTicks: 0, empty: true};
 }
-let results = [exampleResult()], current = 0, chapterFilter = 0;
+let results = [emptyResult()], current = 0, chapterFilter = 0;
 
 function analyse(res){
   let total = 0; const perCh = {}; const cells = {};
@@ -504,8 +493,8 @@ function renderStatic(){
 function render(){
   const res = results[current], a = analyse(res);
   // file chips
-  $("files").innerHTML = results[0].example
-    ? `<span class="example">${esc(t("example"))}</span><span class="meta" style="margin:0">${esc(t("exampleNote"))}</span>`
+  $("files").innerHTML = res.empty
+    ? `<span class="meta" style="margin:0">${esc(t("emptyNote"))}</span>`
     : results.map((r, i) => `<button type="button" id="file-${i}" data-i="${i}" aria-pressed="${i === current}">${esc(r.name)} <small>${analyse(r).total}/99</small></button>`).join("");
   // summary
   $("count").innerHTML = `${a.total}<small> / 99</small>`;
@@ -515,7 +504,8 @@ function render(){
   $("meta").textContent = meta.join(" · ");
   // chapter bars
   const spoil = $("spoiler").checked;
-  const reached = Math.max(1, ...a.locs.filter(l => l.state !== "idle").map(l => l.ch));
+  // before a save is loaded every chapter stays locked, so nothing is spoiled
+  const reached = res.empty ? 0 : Math.max(1, ...a.locs.filter(l => l.state !== "idle").map(l => l.ch));
   $("chapters").innerHTML = Object.keys(a.perCh).map(ch => {
     const [g, n] = a.perCh[ch], pct = Math.round(g / n * 100);
     if (!spoil && +ch > reached)
@@ -560,8 +550,11 @@ function render(){
     }
     html += `</div>`;
   }
-  if (!shown) html = `<div class="empty">${esc(t("none"))}</div>`;
-  if (hidden) html += `<p class="hint">${esc(t("hiddenNote")(hidden))}</p>`;
+  if (res.empty && !spoil) html = `<div class="empty">${esc(t("emptyList"))}</div>`;
+  else {
+    if (!shown) html = `<div class="empty">${esc(t("none"))}</div>`;
+    if (hidden) html += `<p class="hint">${esc(t("hiddenNote")(hidden))}</p>`;
+  }
   if (chapterFilter) html += `<p><button type="button" class="btn" id="showall">${esc(t("chapterAll"))}</button></p>`;
   $("list").innerHTML = html;
 }
