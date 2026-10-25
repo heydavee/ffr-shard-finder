@@ -1,0 +1,634 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tablet Shard Finder</title>
+<meta name="description" content="Upload your Final Fantasy Resonance save and see which of the 99 Tablet Shards you are missing. Runs entirely in your browser.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpolygon points='16,1 31,14 23,31 7,29 1,12' fill='%23E9B93C' stroke='%23E9ECFA' stroke-width='2'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>
+/* Classic FF menu-window look: one deliberate dark-blue world, no light variant */
+:root{
+  color-scheme:dark;
+  --bg:#050822; --bg2:#0C1450;
+  --win-top:#3448B8; --win-bot:#0E1663; --frame:#E9ECFA; --frame-out:#03061C;
+  --sunk:rgba(2,5,30,.45); --ink:#F5F7FF; --muted:#B3BDEB; --line:rgba(200,210,255,.28);
+  --gold:#F6D36E; --gold-fill:#E9B93C; --gold-soft:rgba(246,211,110,.16);
+  --ok:#86E8C8; --ok-soft:rgba(110,230,190,.16); --miss:#FF9A86; --miss-soft:rgba(255,120,95,.18);
+  --part:#F6D36E; --part-soft:rgba(246,211,110,.16); --idle:#7480BC;
+  --display:"Cinzel",Georgia,"Times New Roman",serif;
+  --body:"Source Sans 3","Segoe UI",system-ui,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
+}
+*{box-sizing:border-box}
+html{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+img{max-width:100%}
+[hidden]{display:none!important}
+body{background:radial-gradient(1200px 600px at 50% -10%,var(--bg2),var(--bg) 70%) fixed,var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.5;margin:0;min-height:100%}
+.wrap{max-width:1040px;margin:0 auto;padding-inline:20px;padding-block:0 8px}
+@media (max-width:480px){.wrap{padding-inline:16px}}
+a{color:var(--gold)}
+button,input{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+
+.win{background:linear-gradient(180deg,var(--win-top),var(--win-bot));border:2px solid var(--frame);border-radius:8px;
+  box-shadow:0 0 0 2px var(--frame-out),inset 0 0 0 1px rgba(255,255,255,.12),0 10px 30px rgba(0,0,0,.45);
+  padding:20px 22px;text-shadow:1px 1px 0 rgba(0,0,0,.55)}
+@media (max-width:480px){.win{padding:16px}}
+
+header.top{padding-block:30px 18px;display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap}
+.eyebrow{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:600}
+h1{font-family:var(--display);font-weight:700;font-size:clamp(30px,5vw,48px);line-height:1.1;margin:6px 0 0;letter-spacing:.04em;text-wrap:balance;
+  background:linear-gradient(180deg,#FFFFFF 30%,#B9C6FF);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 2px 0 rgba(0,0,0,.6))}
+h2{font-family:var(--display);font-weight:500;font-size:20px;margin:0;letter-spacing:.04em}
+.lang{display:flex;border:2px solid var(--frame);border-radius:6px;overflow:hidden;box-shadow:0 0 0 2px var(--frame-out)}
+.lang button{background:linear-gradient(180deg,var(--win-top),var(--win-bot));border:0;color:var(--muted);padding:6px 12px;cursor:pointer;font-weight:700;font-size:13px}
+.lang button[aria-pressed="true"]{background:var(--frame);color:var(--win-bot)}
+
+.intro{display:grid;grid-template-columns:1.1fr 1fr;gap:22px;margin-bottom:22px;align-items:stretch}
+@media (max-width:760px){.intro{grid-template-columns:1fr}}
+.intro p{margin:0 0 12px;max-width:62ch}
+.intro p.small{font-size:14px;color:var(--muted)}
+.path{display:flex;gap:8px;align-items:stretch;margin-top:6px}
+.path code{flex:1;min-width:0;overflow-x:auto;white-space:nowrap;background:var(--sunk);border:1px solid var(--line);border-radius:6px;padding:8px 10px;font-family:var(--mono);font-size:13px;text-shadow:none}
+.btn{background:linear-gradient(180deg,#4A5FD0,#1A2380);border:2px solid var(--frame);color:var(--ink);border-radius:6px;padding:5px 12px;cursor:pointer;font-weight:700;font-size:14px;white-space:nowrap;text-shadow:1px 1px 0 rgba(0,0,0,.5)}
+.btn:hover{filter:brightness(1.15)}
+
+.drop{cursor:pointer;text-align:center;display:grid;align-content:center;transition:filter .15s}
+.drop:hover,.drop.over{filter:brightness(1.18)}
+.drop .inner{border:2px dashed rgba(233,236,250,.45);border-radius:6px;padding:22px 14px;display:grid;gap:8px;justify-items:center;width:100%}
+.drop strong{font-size:18px}
+.drop span{color:var(--muted);font-size:14px}
+.drop .glyph{width:38px;height:38px;background:linear-gradient(160deg,#FFF2C2,var(--gold-fill) 55%,#9C6E08);clip-path:polygon(50% 0,100% 42%,72% 100%,22% 92%,0 38%);filter:drop-shadow(0 0 8px rgba(246,211,110,.6))}
+.drop .privacy{font-size:13px;color:var(--ok);font-weight:700}
+.errors{margin-top:10px;display:grid;gap:6px}
+.errors div{background:var(--miss-soft);border:1px solid var(--miss);color:var(--ink);border-radius:6px;padding:8px 12px;font-size:14px;text-align:left}
+
+section.result{display:grid;gap:22px;padding-block:0 22px}
+.files{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.files button{background:linear-gradient(180deg,var(--win-top),var(--win-bot));border:2px solid var(--line);border-radius:6px;padding:5px 14px;cursor:pointer;font-size:14px;display:flex;gap:8px;align-items:baseline;text-shadow:1px 1px 0 rgba(0,0,0,.5)}
+.files button[aria-pressed="true"]{border-color:var(--frame)}
+.files button[aria-pressed="true"]::before{content:"▶";color:var(--gold);font-size:11px}
+.files button small{color:var(--muted);font-family:var(--mono);font-size:12px}
+.example{background:var(--part-soft);border:1px solid var(--part);color:var(--part);border-radius:6px;padding:3px 12px;font-size:13px;font-weight:700}
+.files .meta{margin:0}
+
+.summary{display:grid;grid-template-columns:auto 1fr;gap:32px;align-items:end}
+@media (max-width:640px){.summary{grid-template-columns:1fr;gap:18px}}
+.count{font-family:var(--display);font-weight:700;font-size:64px;line-height:1;font-variant-numeric:tabular-nums;color:var(--gold)}
+.count small{font-size:28px;color:var(--muted);font-weight:500}
+.meta{color:var(--muted);font-size:14px;margin-top:6px;font-variant-numeric:tabular-nums}
+.chapters{display:grid;grid-template-columns:repeat(8,1fr);gap:8px}
+@media (max-width:520px){.chapters{grid-template-columns:repeat(4,1fr)}}
+.chap{display:grid;gap:4px;font-size:12px;font-variant-numeric:tabular-nums;background:none;border:0;padding:0;text-align:left;cursor:pointer}
+.chap .bar{height:56px;background:var(--sunk);border:1px solid var(--line);border-radius:4px;position:relative;overflow:hidden}
+.chap .bar i{position:absolute;left:0;right:0;bottom:0;background:linear-gradient(180deg,#FFE08A,var(--gold-fill))}
+.chap .bar.full i{background:linear-gradient(180deg,#B5F5DE,#3FB894)}
+.chap.locked{cursor:default;opacity:.55}
+.chap.locked .bar{display:grid;place-items:center;font-family:var(--display);font-size:20px;color:var(--muted)}
+.chap b{font-family:var(--mono);font-size:12px;font-weight:600}
+.chap span{color:var(--muted)}
+.chap[aria-pressed="true"] .bar{outline:2px solid var(--frame);outline-offset:1px}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(34px,1fr));gap:4px;margin-bottom:12px}
+.cell{aspect-ratio:1;max-width:100%;border:0;padding:0;cursor:pointer;background:transparent;position:relative;font-family:var(--mono);font-size:10px;color:var(--muted);text-shadow:none}
+.cell::before{content:"";position:absolute;inset:3px;clip-path:polygon(50% 0,100% 42%,72% 100%,22% 92%,0 38%);background:var(--sunk)}
+.cell span{position:relative}
+.cell.got::before{background:linear-gradient(160deg,#FFF2C2,var(--gold-fill) 55%,#B9860F)}
+.cell.got{color:#2A1E00;font-weight:600}
+.cell.part::before{background:repeating-linear-gradient(45deg,var(--gold-fill) 0 3px,rgba(2,5,30,.6) 3px 6px)}
+.cell.part{color:var(--ink);font-weight:600}
+.cell.miss::before{background:var(--miss-soft);box-shadow:inset 0 0 0 2px var(--miss)}
+.cell.miss{color:var(--miss);font-weight:600}
+.cell.idle{color:var(--idle)}
+.cell.secret{cursor:default;color:var(--idle)}
+.cell:not(.secret):hover::before{filter:brightness(1.3)}
+.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--muted)}
+.legend i{display:inline-block;width:12px;height:12px;vertical-align:-1px;margin-right:6px;clip-path:polygon(50% 0,100% 42%,72% 100%,22% 92%,0 38%)}
+
+.controls{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:4px}
+.switches{display:flex;gap:18px;flex-wrap:wrap}
+.toggle{display:flex;gap:8px;align-items:center;font-size:14px;cursor:pointer}
+.toggle input{accent-color:var(--gold);width:16px;height:16px}
+.hint{margin:16px 0 0;font-size:14px;color:var(--muted)}
+
+.chgroup h3{font-family:var(--display);font-weight:500;font-size:15px;letter-spacing:.1em;color:var(--gold);margin:20px 0 6px;text-transform:uppercase}
+.loc{display:grid;grid-template-columns:110px 1fr auto;gap:4px 14px;padding:12px 6px;border-bottom:1px solid var(--line);align-items:baseline;scroll-margin-top:20px;border-radius:4px}
+.loc.flash{animation:flash 1.4s ease}
+@keyframes flash{0%,40%{background:rgba(255,255,255,.16)}100%{background:transparent}}
+@media (prefers-reduced-motion:reduce){.loc.flash{animation:none;background:rgba(255,255,255,.12)}}
+.pill{font-size:12px;font-weight:700;border-radius:4px;padding:1px 10px;text-align:center;letter-spacing:.03em;justify-self:start;border:1px solid currentColor;text-shadow:none}
+.pill.ok{background:var(--ok-soft);color:var(--ok)}
+.pill.part{background:var(--part-soft);color:var(--part)}
+.pill.miss{background:var(--miss-soft);color:var(--miss)}
+.pill.idle{background:var(--sunk);color:var(--muted)}
+.loc .name{font-weight:700}
+.loc .name em{font-style:normal;font-weight:400;color:var(--muted);margin-left:6px;font-size:14px}
+.loc .num{font-family:var(--mono);font-size:14px;font-variant-numeric:tabular-nums;color:var(--muted)}
+.loc .num b{color:var(--ink)}
+.loc ul{grid-column:2 / 4;margin:6px 0 0;padding:0;list-style:none;display:grid;gap:4px}
+.loc li{display:grid;grid-template-columns:44px 1fr;gap:8px;font-size:14px}
+.loc li code{font-family:var(--mono);color:var(--gold);font-weight:600}
+.loc .note{grid-column:2 / 4;font-size:13px;color:var(--part);margin-top:4px}
+@media (max-width:520px){.loc{grid-template-columns:1fr auto}.loc .pill{grid-column:1 / 3}.loc ul,.loc .note{grid-column:1 / 3}}
+.empty{padding:20px 4px;color:var(--muted)}
+
+.top-right{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.donate{display:inline-flex;align-items:center;gap:8px;text-decoration:none;color:var(--ink);font-weight:700;font-size:14px}
+.donate::before{content:"";width:14px;height:14px;background:var(--gold-fill);clip-path:polygon(50% 0,100% 42%,72% 100%,22% 92%,0 38%)}
+footer{padding-block:4px 36px;font-size:13px;color:var(--muted);display:grid;gap:6px}
+footer p{margin:0;max-width:80ch}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="top">
+    <div>
+      <div class="eyebrow" data-t="eyebrow"></div>
+      <h1>Tablet Shard Finder</h1>
+    </div>
+    <div class="top-right">
+    <a class="btn donate" id="donate" href="#" target="_blank" rel="noopener" hidden><span data-t="donate"></span></a>
+    <div class="lang" role="group" aria-label="Sprache / Language">
+      <button id="lang-en" type="button" data-lang="en">EN</button>
+      <button id="lang-de" type="button" data-lang="de">DE</button>
+    </div>
+    </div>
+  </header>
+
+  <div class="intro">
+    <div class="win">
+      <p data-t="lead"></p>
+      <p class="small" data-t="where"></p>
+      <div class="path">
+        <code id="savepath">%LOCALAPPDATA%\FFRS\Steam\</code>
+        <button class="btn" id="copy" type="button" data-t="copy"></button>
+      </div>
+      <p class="small" style="margin-top:8px" data-t="where2"></p>
+    </div>
+    <div>
+      <label class="drop win" id="drop" for="file">
+        <div class="inner">
+          <div class="glyph" aria-hidden="true"></div>
+          <strong data-t="dropTitle"></strong>
+          <span data-t="dropSub"></span>
+          <span class="privacy" data-t="privacy"></span>
+        </div>
+      </label>
+      <input type="file" id="file" accept=".sav" multiple hidden>
+      <div class="errors" id="errors"></div>
+    </div>
+  </div>
+
+  <section class="result" aria-live="polite">
+    <div class="files" id="files"></div>
+    <div class="win">
+    <div class="summary">
+      <div>
+        <div class="count" id="count"></div>
+        <div class="meta" id="meta"></div>
+      </div>
+      <div class="chapters" id="chapters"></div>
+    </div>
+    </div>
+    <div class="win">
+    <div class="grid" id="grid"></div>
+    <div class="legend" id="legend"></div>
+    </div>
+    <div class="win">
+    <div class="controls">
+      <h2 data-t="locations"></h2>
+      <div class="switches">
+        <label class="toggle"><input type="checkbox" id="onlymissing" checked> <span data-t="onlyMissing"></span></label>
+        <label class="toggle"><input type="checkbox" id="spoiler"> <span data-t="spoiler"></span></label>
+      </div>
+    </div>
+    <div id="list"></div>
+    </div>
+  </section>
+
+  <footer>
+    <p data-t="how"></p>
+    <p data-t="credits"></p>
+    <p id="donate-foot" hidden><span data-t="donateNote"></span> <a id="donate-link" href="#" target="_blank" rel="noopener"></a></p>
+  </footer>
+</div>
+
+<script src="vendor/crypto-js.min.js"></script>
+<script>
+"use strict";
+/* ================= CONFIG =================
+   donateUrl: your donation page, e.g. "https://ko-fi.com/yourname".
+   Leave it empty ("") to hide the donation button. */
+const CONFIG = {
+  donateUrl: "https://ko-fi.com/heydave",
+};
+/* ========================================== */
+/* ---------------- Shard data ----------------
+   [chapter, [[mapId, uniqueId], ...], German name, English name, [[guideNo, de, en], ...]]
+   Extracted from the game's level files (BP_MapGimmick_FieldItem_Medal, item 25004).
+   Guide numbering and descriptions follow PowerPyx. Within one location the game does not say
+   which uniqueId belongs to which guide number. */
+const LOC = [
+[1,[[2015,4]],"Handelsviertel","Commercial District",[[1,"Links neben den Verkaufsständen zwischen Kisten","Left of the vendor stalls, among crates"]]],
+[1,[[2020,5]],"Kol","Village of Kol",[[2,"Linke Seite des Teichs im Südwesten","Left side of the pool in the southwest"]]],
+[1,[[2040,8],[2040,9]],"Felicitas","Town of Felicitas",[[3,"Östlich der Holzbrücke, rechts der Steinmauer","East of the wooden bridge, right of the stone wall"],[4,"Versteckter Weg im Westen, hinter der Mauer nach der Leiter","Hidden path west, behind the wall after the ladder"]]],
+[1,[[3040,14],[3040,15]],"Kolobos-Ruinen","Kolobos Ruins",[[5,"Zweiter Bereich, hinter grau-grünen Zylindern bei den Stufen","Second area, behind grey-green cylinders near the steps"],[6,"Nach dem Brückeneinsturz, hinter eingestürzter Säule","After the bridge collapse, behind a fallen pillar"]]],
+[1,[[2030,8],[2030,9]],"Grandport Hafen","Grandport Harbor",[[7,"Südlich vom Item-Shop, hinter Fässern am Pier","South of the Item Shop, behind barrels on the pier"],[8,"Westlich vom Waffen- und Rüstungsladen, am Fuß eines Baums","West of the Weapon & Armor shop, at the base of a tree"]]],
+[1,[[3031,0]],"Schwerthöhle","Cavern of Swords",[[9,"Hinter einem Stalagmiten am Ende der Höhle","Behind a stalagmite at the end of the cave"]]],
+[1,[[3030,6],[3030,7],[3030,8]],"Turm der Sirene","Siren's Tower",[[10,"Hinter dem Brunnen die rechte Treppe hoch, an der Kante","Past the fountain, up the right stairs on the ledge"],[11,"Oben im ersten Hauptbereich, rechtes Ende der Kante","Top of the first main area, right end of the ledge"],[12,"Nächster Raum, Treppe hoch zur sichtbaren linken Kante","Next room, up the stairs to the visible left ledge"]]],
+[2,[[2060,5],[2060,6]],"Dilmagia, die Stadt der Maschinen","Dilmagia, the Machinopolis",[[13,"Erster Bereich links, Ecke beim geschlossenen Tor","First area on the left, corner by the shut gate"],[14,"Zweite Kreuzung, hinter einem Stapel Holzkisten","Second intersection, behind a pile of wooden crates"]]],
+[2,[[2061,12],[2061,13]],"Schiffswerft (Dilmagia)","Shipyard (Dilmagia)",[[15,"Erste Treppe, dann linke Treppe neben der Leiter","First stairs, then the left stairs next to the ladder"],[16,"Erste Treppe, dann rechte Treppe neben dem dritten Träger","First stairs, then the right stairs beside the third girder"]]],
+[2,[[3050,21],[3050,22],[3050,23]],"Donnerschlag-Berg","Mt. Thunderclap",[[17,"Schwerer Weg, offen sichtbar nach dem gelblichen Baum","Harder path, in plain sight after the yellowish tree"],[18,"Leichter Weg, neben einem Baum nach der Leiter","Easier path, next to a tree after the ladder"],[19,"Hinter Felsen nahe dem Ramuh-Schrein","Behind rocks near the Ramuh shrine"]]],
+[2,[[2050,5],[2050,6]],"Zwergenschmiede","Dwarven Forge",[[20,"Südwestecke, Wegende hinter der Brücke","Southwest corner, end of the path past the bridge"],[21,"Nordwesten, südlich vom Mom-Bomb-Boss","Northwest, south of the Mom Bomb boss"]]],
+[2,[[3060,71],[3060,78],[3060,79]],"Moblitz-Schiffswerft","Mobliz Shipyard",[[22,"Erster Bereich, hinter Kisten Richtung Westen","First area, behind crates heading west"],[23,"Erster Aufzugbereich, Südostecke nach der Leiter abwärts","First lift area, southeast corner after the ladder down"],[24,"Zweiter Aufzugbereich, hinter dem Container im Norden","Second lift area, behind the shipping container to the north"]]],
+[2,[[3070,59],[3070,60],[3070,61]],"Windschrein","Wind Shrine",[[25,"Erster Raum, hinter der rechten Säule vor dem Aufzug","First room, behind the right pillar before the elevator"],[26,"Oben an der Treppe, Lücke zwischen Treppe und Geländer","Top of the staircase, gap between stairs and railing"],[27,"Plattform südlich davon, linker Bereich","Platform to the south, left side"]]],
+[3,[[2070,26],[2070,27],[2070,28],[2070,29]],"Aquapolis Olderion","Olderion, the Aquapolis",[[28,"Eingangsbereich, neben dem Bootstour-NPC","Entrance area, next to the boat tour NPC"],[29,"Becken mit Statuen, hinter der linken Bank","Statue pool, behind the bench on the left"],[30,"Steinbrücke, hinter einem Pflanzenkübel nach dem Wasserrad","Stone bridge, behind a plant pot past the water wheel"],[31,"Nördlich vom Statuenbecken, hinter einem Baum nach den Stufen","North of the statue pool, behind a tree after the steps"]]],
+[3,[[3080,38],[3080,39],[3080,40]],"Quellgrotte","Cave of Waters",[[32,"Story-Bootsweg, links vom Anleger","Story boat route, left of the dock"],[33,"Wasserfallraum, vor dem Wasserfall","Waterfall room, in front of the waterfall"],[34,"Versteckter Weg links vom Eingang, Leitern hoch","Hidden path left of the entrance, up the ladders"]]],
+[3,[[3100,11],[3100,12],[3100,13]],"Wasserfallweg","Waterfall Way",[[35,"Zweiter Raum östlich der Treppe, neben der Leiter","Second room east of the stairs, next to the ladder"],[36,"Großer Wasserfallraum, auf einer der Plattformen","Large waterfall room, on one of the platforms"],[37,"Gleicher Raum im Norden, auf einem Fels zwischen den Wasserfällen","Same room to the north, on a rock between the waterfalls"]]],
+[3,[[2090,6],[2090,7]],"Amore","Town of Amore",[[38,"Südlich der Läden, neben dem Brunnen auf der Insel","South of the shops, next to the well on the island"],[39,"Nördlich vom Item-Shop, vor der Brücke beim Baum","North of the Item Shop, before the bridge by the tree"]]],
+[3,[[3110,58],[3110,59],[3110,60]],"Wasserschrein","Water Shrine",[[40,"Raum mit runder Plattform, die abgesenkte Nordtreppe hinunter","Circular platform room, down the lowered north stairs"],[41,"Bootsbereich, Nordost-Kante hinter dem friedlichen Gegner","Boat area, northeast ledge past the friendly enemy"],[42,"Lange Leiter abwärts, links neben der Leiter","Long ladder down, on the left side of the ladder"]]],
+[4,[[2100,2]],"Mozul-Station","Mozul Station",[[43,"Südwestecke der Station","Southwest corner of the station"]]],
+[4,[[2102,1]],"Hauptbahnhof","Capital Station",[[44,"Neben der östlichen Treppe am Eingang","Next to the eastern staircase by the entrance"]]],
+[4,[[2111,4]],"Schloss Zoldaad – Platz","Zoldaad Castle Plaza",[[45,"Direkt östlich vom Tram-Ausgang","Directly east of the tram exit"]]],
+[4,[[2113,4]],"Imperiale Residenzen","Imperial Residences",[[46,"Südostecke","Southeast corner"]]],
+[4,[[2114,2]],"Armenviertel","Slums",[[47,"Östlich vom Startpunkt bei den Fässern","East of the spawn point near the barrels"]]],
+[4,[[3140,10],[3140,11]],"Unterirdischer Durchgang","Underground Tunnel",[[48,"Erster Bereich, Ecke südlich vom Metallsteg","First area, corner south of the metal walkway"],[49,"Unter der Brücke, versteckter Eingang zum rechten Raum","Under the bridge, hidden entrance to the right room"]]],
+[4,[[2120,10],[2120,11]],"Unterschlupf der Rebellen","Rebel Hideout",[[50,"Nordwestecke, versteckter Weg hinter Jakes Raum","Northwest corner, hidden path behind Jake's room"],[51,"Nordosten, hinter einer Metallsäule am Geländer","Northeast, behind a metal pillar by the railing"]]],
+[4,[[3130,45],[3130,46]],"Waffenfabrik","Weapons Factory",[[52,"Lava-Hauptbereich, Westtreppe zum Kristallschalter","Main lava area, west stairs to the crystal switch"],[53,"Plattform an der langen Leiter, zweite links von Norden","Long ladder platform, second on the left from the north"]]],
+[4,[[3150,2],[3150,3]],"Verlies","Dungeon",[[54,"Erste Zelle rechts, nachdem du den Hauptschlüssel hast","First cell on the right after getting the Master Key"],[55,"Ursprünglicher Gefängnisraum, aufgeschlossene Zelle im Westen","Original prison room, unlocked cell on the west side"]]],
+[4,[[3160,10],[3160,11]],"Schloss Zoldaad","Zoldaad Castle",[[56,"Hinter der linken Pferdestatue an der Thronsaaltreppe","Behind the left horse statue at the throne room stairs"],[57,"Rechter Flur von der Thronsaaltreppe, erste Tür im Südosten","Right hallway from the throne stairs, first door southeast"]]],
+[4,[[2016,2]],"Kolosseum (Grandshelt)","Colosseum (Grandshelt)",[[58,"Westlich am Anfangsweg","West along the initial path"]]],
+[5,[[2130,16],[2130,17],[2130,18]],"Mysidia, die Stadt der Magi","Mysidia, the Magiapolis",[[59,"Haupteingang, Ecke an der rechten Treppe hinter einem NPC","Main entrance, corner of the right stairs behind an NPC"],[60,"Ladenzeile, direkt südlich vom Waffenladen","Storefronts, directly south of the Weapon Shop"],[61,"Bereich mit blauem Teleporter, zweite Säule rechts","Blue teleporter area, second pillar on the right"]]],
+[5,[[3190,25],[3190,26]],"Arkane Bibliothek","Arcane Library",[[62,"Südwestlich vom Eingangsraum, zwischen Schreibtischen","Southwest of the entrance room, among writing desks"],[67,"Letzter Raum, Balkon im Westen nach der Leiter","Final room, west balcony after the ladder"]]],
+[5,[[2140,3],[2140,4]],"Sunioo","Village of Sunioo",[[63,"Direkt am Eingang, zwischen Bank und Topf-Stufen","Right at the entrance, between the bench and the pot steps"],[64,"Nordosten, neben dem Schneemann vor dem Iglu","Northeast, next to the snowman outside the igloo"]]],
+[5,[[3180,13],[3180,14]],"Namenlose Ruinen","Nameless Ruins",[[65,"Erster Raum West, neben einer umgestürzten Säule","First room, west side next to a fallen pillar"],[66,"Zweiter Bereich, südlich vom Speicherpunkt beim Kronleuchter","Second area, south of the Save Point near the chandelier"]]],
+[5,[[3211,3],[3211,4],[3210,26],[3212,4]],"Finas Verstand","Fina's Psyche",[[68,"Links vom Tor mit Vorhängeschloss, unter der Kette","Left of the padlocked gate, under the chain"],[69,"Westlich vom Tor, Kisten oben rechts beim Zelt","West of the gate, crates by the tent in the top right"],[70,"Dritter Bereich West, Lichtung nach dem Öffnen des Tors","Third western area, clearing after unlocking the gate"],[75,"Teil 2: Armeelager im Norden, Vorräte unten rechts","Part 2: army camp to the north, supplies in the bottom right"]]],
+[5,[[3200,4],[3200,5],[3200,6],[3200,7]],"Mysidia-Turm","Tower of Mysidia",[[71,"Haupteingang, Treppe hoch hinter dem großen Kristall","Main entrance, up the stairs behind the large crystal"],[72,"Wendeltreppe, sichtbarer Absatz","Spiral staircase, visible landing"],[73,"Absatz der Wendeltreppe, vor dem Azure-Pot-Gegner","Spiral staircase landing, before the Azure Pot enemy"],[74,"Weiter oben, Schneewehe am Story-Weg","Further up, snowdrift on the story path"]]],
+[6,[[2150,9]],"Gaberada, Unterstadt","Gaberada, the Undertown",[[76,"Rechte Hausseite, nordwestliches Ende","Right side of the house, northwestern end"]]],
+[6,[[3220,34],[3220,35],[3220,36]],"Forschungszentrum-Ruinen","Research Center Ruins",[[77,"Lvl-1-Weg West, Schreibtischraum mit Teleporter","Lvl 1 path west, desk room with teleporter"],[78,"Lvl-1-Weg West, Konsolenraum, Regale im Südosten","Lvl 1 path west, console room, southeast shelves"],[79,"Lvl-2-Weg Ost, Steg rechts nach der Leiter","Lvl 2 path east, gantry on the right after the ladder"]]],
+[6,[[3230,6],[3230,7]],"Unwegsamer Bergpfad","Rugged Mountain Path",[[80,"Westlich vom ersten Speicherpunkt, unter einem toten Baum","West of the first Save Point, under a dead tree"],[81,"Östlich vom zweiten Speicherpunkt, Ecke unten an der Rampe","East of the second Save Point, corner down the ramp"]]],
+[6,[[2160,3]],"Duggle","Town of Duggle",[[82,"Norden, östlich vom Ladeneingang am Wasserfall","North area, east of the shop entrance by the waterfall"]]],
+[6,[[3240,8],[3240,9],[3240,10]],"Gronoa-Schrein","Gronoa Shrine",[[83,"Südende des Absatzes, vor den Treppen abwärts","South end of the landing, before any stairs down"],[84,"Westtreppe Südweg, Säule an der Osttreppe","West stairs south path, pillar by the east staircase"],[85,"Nach der langen Leiter die parallele Leiter im Westen hoch, Süden","After the long ladder, climb the parallel west ladder, south"]]],
+[6,[[3250,82],[3250,84]],"Sanctissimus-Schrein","Sanctissimus Shrine",[[86,"Zweiter Speicherpunkt Nord, versteckter Raum über die Ostleiter","North of the second Save Point, hidden room via the east ladder"],[87,"Dritter Speicherpunkt, Kristallaufzug-Raum, dritter Bereich","Third Save Point, crystal elevator room, third area"]]],
+[7,[[2170,4]],"Sian","Town of Sian",[[88,"Östlich am Item-Shop vorbei, unter dem Blütenbaum","East past the Item Shop, under the blossom tree"]]],
+[7,[[3260,7],[3260,8]],"Berg Reizan","Mt. Reizan",[[89,"Erster Speicherpunkt, Rampe hinunter an der Kreuzung","First Save Point, down the ramp at the crossroads"],[90,"Story-Weg, Plattform zwischen den Brücken bei den Kiefern","Story path, platform between the bridges near the pines"]]],
+[7,[[2180,0]],"Ryuseisee","Lake Ryusei",[[91,"Westseite, unter einem Baum","West side, under a tree"]]],
+[7,[[3271,1],[3271,2]],"Waldweg","Forest Path",[[92,"Nördlich vom ersten Speicherpunkt, Biegung am Story-Weg","North of the first Save Point, bend in the story path"],[93,"Südwestlich vom zweiten Speicherpunkt, Sackgasse","Southwest of the second Save Point, dead end"]]],
+[7,[[3272,0],[3272,1]],"Wandernde Länder","Wandering Lands",[[94,"Story-Weg, links an der ersten Gabelung nach dem Speicherpunkt","Story path, left at the first fork after the Save Point"],[95,"Story-Weg, zwischen Steinen nach der Zwischensequenz","Story path, among stones after the cutscene"]]],
+[8,[[3280,124],[3280,125],[3280,126]],"Kristallturm","Crystal Tower",[[96,"Hauptweg, rechts an der ersten Gabelung","Main path, right at the first fork"],[97,"Vorheriger Bereich, linke Gabelung, dann nächste rechts","Previous area, left fork then the next right"],[98,"Durchsichtige Brücke, von der Plattform nach Norden, dann Westen","Translucent bridge, north then west from the platform"]]],
+[8,[[3010,4]],"Drachenschlund","Dragon's Maw",[[99,"Gegen Ende, beim Rogue-Magitek-Armor","Near the end, by the Rogue Magitek Armor"]]],
+];
+
+/* ---------------- i18n ---------------- */
+const T = {
+de:{
+  eyebrow:"Final Fantasy Resonance · Fan-Tool",
+  lead:"Lade deinen Spielstand hoch und sieh sofort, welche der 99 Tablet Shards dir noch fehlen und wo sie liegen.",
+  where:"Die Spielstände der Steam-Version liegen hier (in die Adresszeile des Explorers einfügen):",
+  where2:"Im Ordner mit deiner Steam-ID findest du GameSaveData0.sav, 1 und 2, also eine Datei pro Speicherplatz. Du kannst auch mehrere auf einmal auswählen.",
+  copy:"Kopieren", copied:"Kopiert",
+  dropTitle:"GameSaveData*.sav hierher ziehen", dropSub:"oder klicken, um Dateien auszuwählen",
+  privacy:"Die Datei verlässt deinen Browser nicht.",
+  locations:"Fundorte", onlyMissing:"Nur Orte mit fehlenden Shards",
+  example:"Beispiel-Spielstand", exampleNote:"Beispiel: Kapitel 3, 38 Shards",
+  of:"von", saved:"gespeichert", playtime:"Spielzeit",
+  ch:"Kap.", chapter:"Kapitel", all:"alle",
+  st_ok:"komplett", st_part:"teilweise", st_miss:"fehlt", st_idle:"nicht betreten",
+  oneOf:(m,n)=>m===1?`Einer dieser ${n} Shards fehlt. Das Spiel speichert nur die Anzahl, nicht welcher.`:`${m} dieser ${n} Shards fehlen. Das Spiel speichert nur die Anzahl, nicht welche.`,
+  lg_got:"gesammelt", lg_part:"Ort teilweise gesammelt", lg_miss:"fehlt (Ort betreten)", lg_idle:"noch nicht betreten",
+  none:"Hier fehlt nichts. Alle Shards dieser Auswahl sind gesammelt.",
+  chapterAll:"Alle Kapitel anzeigen",
+  donate:"Unterstützen",
+  donateNote:"Dir hilft das Tool? Über eine kleine Spende freue ich mich:",
+  spoiler:"Spoiler-Modus: alle Kapitel und nicht betretene Gebiete zeigen",
+  secretCell:"Noch nicht betreten",
+  hiddenNote:n=>`${n} weitere Shards liegen in Gebieten, die du noch nicht betreten hast. Schalte den Spoiler-Modus ein, um sie zu sehen.`,
+  err_magic:f=>`${f}: Das ist keine Speicherdatei von FF Resonance. Wähle GameSaveData0.sav, 1 oder 2.`,
+  err_nomap:f=>`${f}: Diese Datei enthält keinen Spielfortschritt (z. B. OptionSaveData.sav). Wähle GameSaveData0.sav, 1 oder 2.`,
+  err_parse:f=>`${f}: Die Datei konnte nicht gelesen werden. Sie ist vielleicht beschädigt oder stammt aus einer anderen Spielversion.`,
+  how:"So funktioniert es: Der Spielstand wird direkt im Browser entschlüsselt (AES) und ausgewertet. Es wird nichts hochgeladen oder gespeichert. Jeder Shard ist im Spiel ein eigenes Objekt mit fester ID. Diese IDs stammen aus den Level-Dateien des Spiels. An Orten mit mehreren Shards speichert das Spiel nur, welche IDs du hast. Welche ID zu welcher Guide-Nummer gehört, ist nicht bekannt, deshalb zeigt das Tool dort alle Kandidaten.",
+  credits:"Inoffizielles Fan-Tool, nicht mit Square Enix verbunden. Ortsnamen aus der deutschen Lokalisierung des Spiels. Nummerierung und Fundort-Beschreibungen nach dem Guide von PowerPyx.",
+},
+en:{
+  eyebrow:"Final Fantasy Resonance · fan tool",
+  lead:"Drop in your save file and see right away which of the 99 Tablet Shards you are still missing and where to find them.",
+  where:"Steam saves are stored here (paste it into the Explorer address bar):",
+  where2:"Inside the folder named after your Steam ID you'll find GameSaveData0.sav, 1 and 2, one per save slot. You can pick several at once.",
+  copy:"Copy", copied:"Copied",
+  dropTitle:"Drop GameSaveData*.sav here", dropSub:"or click to choose files",
+  privacy:"Your file never leaves your browser.",
+  locations:"Locations", onlyMissing:"Only locations with missing shards",
+  example:"Example save", exampleNote:"Example: chapter 3, 38 shards",
+  of:"of", saved:"saved", playtime:"play time",
+  ch:"Ch.", chapter:"Chapter", all:"all",
+  st_ok:"complete", st_part:"partial", st_miss:"missing", st_idle:"not visited",
+  oneOf:(m,n)=>m===1?`One of these ${n} shards is missing. The game only stores how many, not which one.`:`${m} of these ${n} shards are missing. The game only stores how many, not which ones.`,
+  lg_got:"collected", lg_part:"location partly collected", lg_miss:"missing (location visited)", lg_idle:"not visited yet",
+  none:"Nothing missing here. Every shard in this selection is collected.",
+  chapterAll:"Show all chapters",
+  donate:"Support this tool",
+  donateNote:"Found this useful? A small tip is much appreciated:",
+  spoiler:"Spoiler mode: show all chapters and unvisited areas",
+  secretCell:"Not visited yet",
+  hiddenNote:n=>`${n} more shards are in areas you haven't visited yet. Turn on spoiler mode to see them.`,
+  err_magic:f=>`${f}: This is not an FF Resonance save file. Pick GameSaveData0.sav, 1 or 2.`,
+  err_nomap:f=>`${f}: This file has no game progress in it (e.g. OptionSaveData.sav). Pick GameSaveData0.sav, 1 or 2.`,
+  err_parse:f=>`${f}: The file could not be read. It may be damaged or come from a different game version.`,
+  how:"How it works: the save is decrypted (AES) and read right here in your browser. Nothing is uploaded or stored. Each shard is a separate object in the game with a fixed ID, taken from the game's level files. For locations with several shards the game only records which IDs you have, and which ID matches which guide number is unknown, so the tool lists every candidate there.",
+  credits:"Unofficial fan tool, not affiliated with Square Enix. Location names from the game's localization. Numbering and spot descriptions follow the PowerPyx guide.",
+}};
+let lang = "en";
+try { lang = localStorage.getItem("tsf-lang") || "en"; } catch(e) {}
+const t = k => T[lang][k];
+
+/* ---------------- Save decoding ---------------- */
+const KEY = CryptoJS.enc.Utf8.parse("wwrqPkdwzPvgfchQ8kTYHVbn4umTf3d7");
+class SaveError extends Error { constructor(kind){ super(kind); this.kind = kind; } }
+
+function decrypt(u8){
+  if (u8.length < 48 || String.fromCharCode(u8[0],u8[1],u8[2],u8[3]) !== "SVHD") throw new SaveError("magic");
+  const body = u8.slice(32, 32 + Math.floor((u8.length - 32) / 16) * 16);
+  const ct = CryptoJS.lib.WordArray.create(body);
+  const pt = CryptoJS.AES.decrypt(CryptoJS.lib.CipherParams.create({ciphertext: ct}), KEY,
+    {mode: CryptoJS.mode.ECB, padding: CryptoJS.pad.NoPadding});
+  const out = new Uint8Array(pt.sigBytes), w = pt.words;
+  for (let i = 0; i < out.length; i++) out[i] = (w[i >>> 2] >>> (24 - (i & 3) * 8)) & 0xff;
+  if (String.fromCharCode(out[0],out[1],out[2],out[3]) !== "GVAS") throw new SaveError("magic");
+  return out;
+}
+
+const latin1 = new TextDecoder("latin1"), utf16 = new TextDecoder("utf-16le");
+class Reader {
+  constructor(b){ this.b = b; this.d = new DataView(b.buffer, b.byteOffset, b.byteLength); this.o = 0; }
+  i32(){ const v = this.d.getInt32(this.o, true); this.o += 4; return v; }
+  u32(){ const v = this.d.getUint32(this.o, true); this.o += 4; return v; }
+  u16(){ const v = this.d.getUint16(this.o, true); this.o += 2; return v; }
+  i16(){ const v = this.d.getInt16(this.o, true); this.o += 2; return v; }
+  u8(){ return this.b[this.o++]; }
+  i8(){ const v = this.d.getInt8(this.o); this.o += 1; return v; }
+  f32(){ const v = this.d.getFloat32(this.o, true); this.o += 4; return v; }
+  f64(){ const v = this.d.getFloat64(this.o, true); this.o += 8; return v; }
+  i64(){ const v = this.d.getBigInt64(this.o, true); this.o += 8; return Number(v); }
+  u64(){ const v = this.d.getBigUint64(this.o, true); this.o += 8; return Number(v); }
+  fstr(){
+    const n = this.i32();
+    if (n === 0) return "";
+    if (n < 0) { const len = -n * 2; const s = utf16.decode(this.b.subarray(this.o, this.o + len - 2)); this.o += len; return s; }
+    if (n > this.b.length - this.o) throw new SaveError("parse");
+    const s = latin1.decode(this.b.subarray(this.o, this.o + n - 1)); this.o += n; return s;
+  }
+  typename(){ const a = [this.fstr()]; const n = this.i32(); for (let i = 0; i < n; i++) a.push(this.typename()); return a; }
+}
+const SCALAR = {IntProperty:"i32",UInt32Property:"u32",Int64Property:"i64",UInt64Property:"u64",Int16Property:"i16",
+  UInt16Property:"u16",Int8Property:"i8",FloatProperty:"f32",DoubleProperty:"f64"};
+const NATIVE = {DateTime:8,Timespan:8,Vector:24,Rotator:24,Vector2D:16,Quat:32,LinearColor:16,Color:4,IntPoint:8,IntVector:12,Guid:16};
+
+function readProps(r){
+  const out = {};
+  for (;;) {
+    const name = r.fstr();
+    if (name === "None" || name === "") return out;
+    const ty = r.typename(), size = r.i32(), flags = r.u8();
+    if (flags & 1) r.i32();
+    if (flags & 2) r.o += 16;
+    if (flags & 4) { if (r.u8() & 2) r.o += 17; }
+    const start = r.o;
+    if (ty[0] === "BoolProperty") out[name] = !!(flags & 0x10);
+    else { try { out[name] = readValue(r, ty); } catch(e) { out[name] = null; } }
+    r.o = start + size;
+  }
+}
+function readValue(r, ty){
+  const k = ty[0];
+  if (SCALAR[k]) return r[SCALAR[k]]();
+  switch (k) {
+    case "BoolProperty": return !!r.u8();
+    case "StrProperty": case "NameProperty": case "EnumProperty": case "SoftObjectProperty": case "ObjectProperty": return r.fstr();
+    case "ByteProperty": return ty.length > 1 ? r.fstr() : r.u8();
+    case "StructProperty": {
+      const s = ty[1][0];
+      if (s === "DateTime") return r.i64();
+      if (NATIVE[s]) { r.o += NATIVE[s]; return null; }
+      return readProps(r);
+    }
+    case "ArrayProperty": case "SetProperty": {
+      if (k === "SetProperty") r.i32();
+      const n = r.i32();
+      if (ty[1].length === 1 && ty[1][0] === "ByteProperty") { r.o += n; return null; }
+      const a = new Array(n); for (let i = 0; i < n; i++) a[i] = readValue(r, ty[1]); return a;
+    }
+    case "MapProperty": {
+      r.i32(); const n = r.i32(), a = [];
+      for (let i = 0; i < n; i++) { const key = readValue(r, ty[1]); a.push([key, readValue(r, ty[2])]); }
+      return a;
+    }
+  }
+  throw new SaveError("parse");
+}
+function parseSave(u8){
+  const r = new Reader(decrypt(u8));
+  r.o = 4; r.i32(); r.i32(); r.i32(); r.u16(); r.u16(); r.u16(); r.u32(); r.fstr();
+  r.i32(); const nc = r.i32(); r.o += nc * 20;
+  r.fstr(); r.u8();
+  return readProps(r);
+}
+function evaluate(save){
+  const mg = save && save.Map && save.Map.mapGimmick;
+  if (!Array.isArray(mg)) throw new SaveError("nomap");
+  const got = new Map();
+  for (const [mapId, g] of mg) {
+    const list = (g && g.treasureBox && g.treasureBox.treasureBoxList) || [];
+    got.set(mapId, new Set(list.filter(b => b && b.ID === -1 && b.IsOpen).map(b => b.UniqueID)));
+  }
+  const p = save.Player || {};
+  return {got, playTime: p.PlayTime || 0, savedTicks: p.SavedDateTime || 0};
+}
+
+/* ---------------- State ---------------- */
+function exampleResult(){
+  const got = new Map();
+  for (const [ch, keys] of LOC) {
+    if (ch > 3) continue;
+    for (const [m, u] of keys) {
+      if (m === 3110) continue;          // Water Shrine not reached yet
+      if (m === 2060 && u === 6) { if (!got.has(m)) got.set(m, new Set()); continue; }
+      if (!got.has(m)) got.set(m, new Set());
+      got.get(m).add(u);
+    }
+  }
+  return {name: null, got, playTime: 50728, savedTicks: 0, example: true};
+}
+let results = [exampleResult()], current = 0, chapterFilter = 0;
+
+function analyse(res){
+  let total = 0; const perCh = {}; const cells = {};
+  const locs = LOC.map(([ch, keys, de, en, guide], idx) => {
+    const n = keys.filter(([m, u]) => res.got.has(m) && res.got.get(m).has(u)).length;
+    const visited = keys.some(([m]) => res.got.has(m));
+    const state = n === keys.length ? "ok" : n > 0 ? "part" : visited ? "miss" : "idle";
+    total += n;
+    (perCh[ch] = perCh[ch] || [0, 0])[0] += n; perCh[ch][1] += keys.length;
+    for (const g of guide) cells[g[0]] = {state: state === "ok" ? "got" : state, idx};
+    return {idx, ch, de, en, guide, n, of: keys.length, state};
+  });
+  return {total, perCh, cells, locs};
+}
+
+/* ---------------- Rendering ---------------- */
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+function fmtTime(sec){ sec = Math.floor(sec); return `${Math.floor(sec/3600)}:${String(Math.floor(sec%3600/60)).padStart(2,"0")} h`; }
+function fmtDate(ticks){
+  if (!ticks) return "";
+  const d = new Date((ticks - 621355968000000000) / 10000);
+  return d.toLocaleString(lang === "de" ? "de-DE" : "en-GB", {timeZone:"UTC", dateStyle:"medium", timeStyle:"short"});
+}
+
+function renderStatic(){
+  document.documentElement.lang = lang;
+  document.querySelectorAll("[data-t]").forEach(el => { el.textContent = t(el.dataset.t); });
+  $("lang-de").setAttribute("aria-pressed", lang === "de");
+  $("lang-en").setAttribute("aria-pressed", lang === "en");
+  $("legend").innerHTML = [["got","var(--gold-fill)"],["part","repeating-linear-gradient(45deg,var(--gold-fill) 0 2px,var(--sunk) 2px 4px)"],["miss","var(--miss)"],["idle","var(--sunk)"]]
+    .map(([k, bg]) => `<span><i style="background:${bg}"></i>${esc(t("lg_" + k))}</span>`).join("");
+}
+
+function render(){
+  const res = results[current], a = analyse(res);
+  // file chips
+  $("files").innerHTML = results[0].example
+    ? `<span class="example">${esc(t("example"))}</span><span class="meta" style="margin:0">${esc(t("exampleNote"))}</span>`
+    : results.map((r, i) => `<button type="button" id="file-${i}" data-i="${i}" aria-pressed="${i === current}">${esc(r.name)} <small>${analyse(r).total}/99</small></button>`).join("");
+  // summary
+  $("count").innerHTML = `${a.total}<small> / 99</small>`;
+  const meta = [];
+  if (res.savedTicks) meta.push(`${t("saved")} ${fmtDate(res.savedTicks)}`);
+  if (res.playTime) meta.push(`${t("playtime")} ${fmtTime(res.playTime)}`);
+  $("meta").textContent = meta.join(" · ");
+  // chapter bars
+  const spoil = $("spoiler").checked;
+  const reached = Math.max(1, ...a.locs.filter(l => l.state !== "idle").map(l => l.ch));
+  $("chapters").innerHTML = Object.keys(a.perCh).map(ch => {
+    const [g, n] = a.perCh[ch], pct = Math.round(g / n * 100);
+    if (!spoil && +ch > reached)
+      return `<div class="chap locked" aria-label="${esc(t("chapter"))} ${ch}"><div class="bar">?</div><span>${esc(t("ch"))} ${ch}</span><b>?</b></div>`;
+    return `<button type="button" class="chap" id="chap-${ch}" data-ch="${ch}" aria-pressed="${chapterFilter == ch}" title="${esc(t("chapter"))} ${ch}">
+      <div class="bar${g === n ? " full" : ""}"><i style="height:${pct}%"></i></div>
+      <span>${esc(t("ch"))} ${ch}</span><b>${g}/${n}</b></button>`;
+  }).join("");
+  // shard grid
+  let cells = "";
+  for (let i = 1; i <= 99; i++) {
+    const c = a.cells[i], L = a.locs[c.idx];
+    if (!spoil && L.state === "idle") {
+      cells += `<button type="button" class="cell idle secret" id="cell-${i}" title="#${i} · ${esc(t("secretCell"))}"><span>?</span></button>`;
+      continue;
+    }
+    cells += `<button type="button" class="cell ${c.state}" id="cell-${i}" data-loc="${c.idx}" title="#${i} · ${esc(lang === "de" ? L.de : L.en)} · ${esc(t("st_" + L.state))}"><span>${i}</span></button>`;
+  }
+  $("grid").innerHTML = cells;
+  // location list
+  const onlyMissing = $("onlymissing").checked;
+  let html = "", shown = 0, hidden = 0;
+  for (let ch = 1; ch <= 8; ch++) {
+    if (chapterFilter && chapterFilter !== ch) continue;
+    const inCh = a.locs.filter(l => l.ch === ch);
+    if (!spoil) hidden += inCh.filter(l => l.state === "idle").reduce((s, l) => s + l.of, 0);
+    const rows = inCh.filter(l => (!onlyMissing || l.state !== "ok") && (spoil || l.state !== "idle"));
+    if (!rows.length) continue;
+    html += `<div class="chgroup"><h3>${esc(t("chapter"))} ${ch}</h3>`;
+    for (const l of rows) {
+      shown++;
+      const primary = lang === "de" ? l.de : l.en, secondary = lang === "de" ? l.en : l.de;
+      html += `<div class="loc" id="loc-${l.idx}">
+        <span class="pill ${l.state}">${esc(t("st_" + l.state))}</span>
+        <div class="name">${esc(primary)}<em>${esc(secondary)}</em></div>
+        <div class="num"><b>${l.n}</b>/${l.of}</div>`;
+      if (l.state !== "ok") {
+        html += `<ul>${l.guide.map(g => `<li><code>#${g[0]}</code><span>${esc(lang === "de" ? g[1] : g[2])}</span></li>`).join("")}</ul>`;
+        if (l.state === "part") html += `<div class="note">${esc(t("oneOf")(l.of - l.n, l.of))}</div>`;
+      }
+      html += `</div>`;
+    }
+    html += `</div>`;
+  }
+  if (!shown) html = `<div class="empty">${esc(t("none"))}</div>`;
+  if (hidden) html += `<p class="hint">${esc(t("hiddenNote")(hidden))}</p>`;
+  if (chapterFilter) html += `<p><button type="button" class="btn" id="showall">${esc(t("chapterAll"))}</button></p>`;
+  $("list").innerHTML = html;
+}
+
+/* ---------------- Events ---------------- */
+async function handleFiles(fileList){
+  const errs = [], ok = [];
+  for (const f of fileList) {
+    try {
+      const buf = new Uint8Array(await f.arrayBuffer());
+      const res = evaluate(parseSave(buf));
+      res.name = f.name.replace(/\.sav$/i, "");
+      ok.push(res);
+    } catch (e) {
+      const kind = e instanceof SaveError ? e.kind : "parse";
+      errs.push(t("err_" + kind)(f.name));
+    }
+  }
+  $("errors").innerHTML = errs.map(e => `<div>${esc(e)}</div>`).join("");
+  if (ok.length) {
+    ok.sort((x, y) => x.name.localeCompare(y.name));
+    results = ok;
+    current = ok.reduce((best, r, i) => r.savedTicks > ok[best].savedTicks ? i : best, 0);
+    chapterFilter = 0;
+    render();
+    document.querySelector("section.result").scrollIntoView({behavior: "smooth", block: "start"});
+  }
+}
+$("file").addEventListener("change", e => { handleFiles(e.target.files); e.target.value = ""; });
+const drop = $("drop");
+["dragenter","dragover"].forEach(ev => drop.addEventListener(ev, e => { e.preventDefault(); drop.classList.add("over"); }));
+["dragleave","drop"].forEach(ev => drop.addEventListener(ev, e => { e.preventDefault(); drop.classList.remove("over"); }));
+drop.addEventListener("drop", e => { if (e.dataTransfer && e.dataTransfer.files.length) handleFiles(e.dataTransfer.files); });
+drop.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); $("file").click(); } });
+drop.tabIndex = 0;
+
+document.addEventListener("click", e => {
+  const langBtn = e.target.closest("[data-lang]");
+  if (langBtn) { lang = langBtn.dataset.lang; try { localStorage.setItem("tsf-lang", lang); } catch(_) {} renderStatic(); render(); return; }
+  const fb = e.target.closest("#files button[data-i]");
+  if (fb) { current = +fb.dataset.i; render(); return; }
+  const cb = e.target.closest(".chap:not(.locked)");
+  if (cb) { chapterFilter = chapterFilter == cb.dataset.ch ? 0 : +cb.dataset.ch; render(); return; }
+  if (e.target.closest("#showall")) { chapterFilter = 0; render(); return; }
+  const cell = e.target.closest(".cell:not(.secret)");
+  if (cell) {
+    const idx = +cell.dataset.loc;
+    let row = $("loc-" + idx);
+    if (!row) { $("onlymissing").checked = false; chapterFilter = 0; render(); row = $("loc-" + idx); }
+    row.scrollIntoView({behavior: "smooth", block: "center"});
+    row.classList.remove("flash"); void row.offsetWidth; row.classList.add("flash");
+  }
+});
+$("onlymissing").addEventListener("change", render);
+$("spoiler").addEventListener("change", render);
+$("copy").addEventListener("click", () => {
+  const text = $("savepath").textContent, btn = $("copy");
+  const done = () => { btn.textContent = t("copied"); setTimeout(() => btn.textContent = t("copy"), 1500); };
+  try {
+    navigator.clipboard.writeText(text).then(done, () => selectPath());
+  } catch (_) { selectPath(); }
+});
+function selectPath(){ const r = document.createRange(); r.selectNodeContents($("savepath")); const s = getSelection(); s.removeAllRanges(); s.addRange(r); }
+
+if (CONFIG.donateUrl) {
+  $("donate").href = $("donate-link").href = CONFIG.donateUrl;
+  $("donate-link").textContent = CONFIG.donateUrl.replace(/^https?:\/\//, "");
+  $("donate").hidden = $("donate-foot").hidden = false;
+}
+renderStatic();
+render();
+</script>
+</body>
+</html>
