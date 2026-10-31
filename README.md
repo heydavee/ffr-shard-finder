@@ -1,6 +1,6 @@
 # Tablet Shard Finder
 
-Find out which of the 99 **Tablet Shards** in *Final Fantasy Resonance* you are still missing.
+Find out which of the 99 **Tablet Shards** in _Final Fantasy Resonance_ you are still missing.
 Drop in your save file and the page shows every location with missing shards, including where to look.
 
 [![Support me on Ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/heydave)
@@ -38,5 +38,9 @@ The page loads no scripts or fonts from third-party servers.
 - [crypto-js](https://github.com/brix/crypto-js) (MIT), fonts Cinzel, Source Sans 3 and JetBrains Mono (SIL OFL 1.1).
 
 ## License
+
+## Todos
+
+Testing PS5 and Switch save files.
 
 [MIT](LICENSE)
