@@ -1,0 +1,1852 @@
+{
+  "method": "Static correlation of shipped actor identities and positions with native landmarks, mesh geometry, map captures, and guide screenshots; no gameplay execution.",
+  "guide": "https://www.powerpyx.com/final-fantasy-resonance-all-tablet-shard-locations/",
+  "checkedOn": "2026-11-01",
+  "engine": "UE5.6",
+  "sourceIdentity": {
+    "containers": {
+      "FFRS-Windows.utoc": "89ae9753fed70ba8454032ebc794f9a61b39acbb621b6e03fd2721cfb0033c83",
+      "FFRS-Windows_0_P.utoc": "76d409de0df967f763ac0f5bea5fa233f2d0ab0f35054b8c6bf16fd9b836245e",
+      "global.utoc": "83054f1cd74f5c0b6cdce4d8d842ed43cc7f005ea52846221be2496fdf77814c"
+    },
+    "propertyMappings": {
+      "name": "FFRS-5.6.1-0+UE5-24b12662.usmap",
+      "sha256": "3d06877d588f7aa34dd59a737cedeb6db75cdde3cf009ca5dd9baab8e7a5c140",
+      "source": "https://www.nexusmods.com/finalfantasyresonance/mods/4?tab=posts"
+    },
+    "parser": {
+      "repository": "https://github.com/FabianFG/CUE4Parse",
+      "commit": "d78896e48d595383376ec2fbac2cad43edbd2dc9"
+    }
+  },
+  "shards": [
+    {
+      "guideNo": 1,
+      "mapId": 2015,
+      "uniqueId": 4,
+      "package": "/Game/Map/Town/01Gra/01Gra_04/GD/Town_01Gra_04_01_GD.umap",
+      "actor": "BP_MapGimmick_FieldItem_Medal_C_1",
+      "worldPosition": [
+        26699,
+        5917,
+        -397
+      ],
+      "guideScreenshots": [
+        "https://www.powerpyx.com/wp-content/uploads/final-fantasy-resonance-tablet-shards-guide-1.jpg"
+      ],
+      "evidence": [
+        "Single shard actor in this location."
+      ]
+    },
+    {
+      "guideNo": 2,
+      "mapId": 2020,
+      "uniqueId": 5,
+      "package": "/Game/Map/Town/02Lan/02Lan_20/GD/Town_02Lan_20_01_GD.umap",
+      "actor": "BP_MapGimmick_FieldItem_Medal_C_3",
+      "worldPosition": [
+        6363,
+        4532,
+        -100
+      ],
+      "guideScreenshots": [
+        "https://www.powerpyx.com/wp-content/uploads/final-fantasy-resonance-tablet-shards-guide-2.jpg"
+      ],
+      "evidence": [
+        "Single shard actor in this location."
+      ]
+    },
+    {
+      "guideNo": 3,
+      "mapId": 2040,
+      "uniqueId": 9,
+      "package": "/Game/Map/Town/03Kol/03Kol_20/GD/Town_03Kol_20_01_GD.umap",
+      "actor": "BP_MapGimmick_FieldItem_Medal_C_3",
+      "worldPosition": [
+        -1651,
+        471,
+        23
+      ],
+      "guideScreenshots": [
+        "https://www.powerpyx.com/wp-content/uploads/final-fantasy-resonance-tablet-shards-guide-3.jpg"
+      ],
+      "evidence": [
+        "Guide image shows the lower stone-wall spot; native Z23, versus UID8 at Z917 on the raised platform."
+      ]
+    },
+    {
+      "guideNo": 4,
+      "mapId": 2040,
+      "uniqueId": 8,
+      "package": "/Game/Map/Town/03Kol/03Kol_20/GD/Town_03Kol_20_01_GD.umap",
+      "actor": "BP_MapGimmick_FieldItem_Medal_C_1",
+      "worldPosition": [
+        -2733,
+        -3948,
+        917
+      ],
+      "guideScreenshots": [
+        "https://www.powerpyx.com/wp-content/uploads/final-fantasy-resonance-tablet-shards-guide-4.jpg"
+      ],
+      "evidence": [
+        "Guide image shows the elevated wooden platform reached by ladder; native Z917, versus UID9 at Z23."
+      ]
+    },
+    {
+      "guideNo": 5,
+      "mapId": 3040,
+      "uniqueId": 15,
+      "package": "/Game/Map/Dng/03Kol/03Kol_40/GD/Dng_03Kol_40_11_GD.umap",
+      "actor": "BP_MapGimmick_FieldItem_Medal_C_3",
+      "worldPosition": [
+        5781,
+        9202,
+        -372
+      ],
+      "landmarkPackages": [
+        "/Game/Map/Dng/03Kol/03Kol_40/BG/Dng_03Kol_40_01_BG.umap"
+      ],
+      "guideScreenshots": [
+        "https://www.powerpyx.com/wp-content/uploads/final-fantasy-resonance-tablet-shards-guide-5.jpg"
+      ],
+      "evidence": [
+        "Native areaB001 capsule-material cylinder geometry is 155 units from this actor; guide image shows paired cylinders. Nearest pillar geometry is over1182 units away."
+      ]
+    },
+    {
+      "guideNo": 6,
+      "mapId": 3040,
+      "uniqueId": 14,
+      "package": "/Game/Map/Dng/03Kol/03Kol_40/GD/Dng_03Kol_40_11_GD.umap",
+      "actor": "BP_MapGimmick_FieldItem_Medal_C_1",
+      "worldPosition": [
+        6076,
+        12989,
+        -350
+      ],
+      "landmarkPackages": [
+        "/Game/Map/Dng/03Kol/03Kol_40/BG/Dng_03Kol_40_01_BG.umap"
+      ],
+      "guideScreenshots": [
+        "https://www.powerpyx.com/wp-content/uploads/final-fantasy-resonance-tablet-shards-guide-6.jpg"
+      ],
+      "evidence": [
+        "Native areaB004 fallen-pillar geometry is86 units away; its component is588 units long and154 units high. Guide image shows that horizontal broken pillar."
+      ]
+    },
+    {
+      "guideNo": 7,
+      "mapId": 2030,
+      "uniqueId": 9,
+      "package": "/Game/Map/Town/02Lan/02Lan_21/GD/Town_02Lan_21_01_GD.umap",
+      "actor": "BP_MapGimmick_FieldItem_Medal_C_7",
+      "worldPosition": [
+        -2665,
+        -4083,
+        216
+      ],
+      "landmarkPackages": [
+        "/Game/Map/Town/02Lan/02Lan_21/BG/Town_02Lan_21_01_BG.umap"
+      ],
+      "guideScreenshots": [
+        "https://www.powerpyx.com/wp-content/uploads/final-fantasy-resonance-tablet-shards-guide-7.jpg"
+      ],
+      "evidence": [
+        "BG Barrels001 at(-2771.75,-4072.05,208.28),108 units away, matches the pier barrels in guide image."
+      ]
+    },
+    {
+      "guideNo": 8,
+      "mapId": 2030,
+      "uniqueId": 8,
+      "package": "/Game/Map/Town/02Lan/02Lan_21/GD/Town_02Lan_21_01_GD.umap",
+      "actor": "BP_MapGimmick_FieldItem_Medal_C_5",
+      "worldPosition": [
+        801,
+        -5811,
+        205
+      ],
+      "landmarkPackages": [
+        "/Game/Map/Town/02Lan/02Lan_21/BG/Town_02Lan_21_01_BG.umap"
+      ],
+      "guideScreenshots": [
+        "https://www.powerpyx.com/wp-content/uploads/final-fantasy-resonance-tablet-shards-guide-8.jpg"
+      ],
+      "evidence": [
+        "BG mapletree001 at(595,-5735,186),220 units away, matches the tree beside the shops in guide image."
+      ]
+    },
+    {
+      "guideNo": 9,
+      "mapId": 3031,
+      "uniqueId": 0,
+      "package": "/Game/Map/Dng/02Lan/02Lan_44/GD/Dng_02Lan_44_01_GD.umap",
+      "actor": "BP_MapGimmick_FieldItem_Medal_C_1",
+      "worldPosition": [
+        5868,
+        -769,
+        11
+      ],
+      "guideScreenshots": [
+        "https://www.powerpyx.com/wp-content/uploads/final-fantasy-resonance-tablet-shards-guide-9.jpg"
+      ],
+      "evidence": [
+        "Single shard actor in this location."
+      ]
+    },
+    {
+      "guideNo": 10,
+      "mapId": 3030,
+      "uniqueId": 8,
+      "package": "/Game/Map/Dng/02Lan/02Lan_40/GD/Dng_02Lan_40_01_GD.umap",
+      "actor": "BP_MapGimmick_FieldItem_Medal_C_5",
+      "worldPosition": [
+        1576,
+        1957,
+        820
+      ],
+      "guideScreenshots": [
+        "https://www.powerpyx.com/wp-content/uploads/final-fantasy-resonance-tablet-shards-guide-10.jpg"
+      ],
+      "evidence": [
+        "First tower ledge has native Z820; the other tower shards are on much higher floors, Z4447 andZ5598."
+      ]
+    },
+    {
+      "guideNo": 11,
+      "mapId": 3030,
+      "uniqueId": 7,
+      "package": "/Game/Map/Dng/02Lan/02Lan_40/GD/Dng_02Lan_40_01_GD.umap",
+      "actor": "BP_MapGimmick_FieldItem_Medal_C_3",
+      "worldPosition": [
+        2126,
+        1297,
+        4447.400002
+      ],
+      "guideScreenshots": [
+        "https://www.powerpyx.com/wp-content/uploads/final-fantasy-resonance-tablet-shards-guide-11.jpg"
+      ],
+      "evidence": [
+        "Upper ledge of first main tower chamber has native Z4447, between the entrance ledge at Z=820 and following room at Z=5598."
+      ]
+    },
+    {
+      "guideNo": 12,
+      "mapId": 3030,
+      "uniqueId": 6,
+      "package": "/Game/Map/Dng/02Lan/02Lan_40/GD/Dng_02Lan_40_01_GD.umap",
+      "actor": "BP_MapGimmick_FieldItem_Medal_C_1",
+      "worldPosition": [
+        12322,
+        -871,
+        5598.400002
+      ],
+      "guideScreenshots": [
+        "https://www.powerpyx.com/wp-content/uploads/final-fantasy-resonance-tablet-shards-guide-12.jpg"
+      ],
+      "evidence": [
+        "The subsequent higher tower room has native Z5598; guide shows its ledge above the previous tower floors."
+      ]
+    },
+    {
+      "guideNo": 13,
+      "mapId": 2060,
+      "uniqueId": 5,
+      "package": "/Game/Map/Town/04Dir/04Dir_01/GD/Town_04Dir_01_01_GD.umap",
+      "actor": "BP_MapGimmick_FieldItem_Medal_C_1",
+      "worldPosition": [
+        861,
+        -1506,
+        7
+      ],
+      "landmarkPackages": [
+        "/Game/Map/Town/04Dir/04Dir_01/BG/Town_04Dir_01_BG.umap"
+      ],
+      "guideScreenshots": [
+        "https://www.powerpyx.com/wp-content/uploads/final-fantasy-resonance-tablet-shards-guide-13.jpg"
+      ],
+      "evidence": [
+        "BG pillar005 at(750,-1635,0),170 units away, and nearby drums identify the isolated lit-gate alcove visible in guide image."
+      ]
+    },
+    {
+      "guideNo": 14,
+      "mapId": 2060,
+      "uniqueId": 6,
+      "package": "/Game/Map/Town/04Dir/04Dir_01/GD/Town_04Dir_01_01_GD.umap",
+      "actor": "BP_MapGimmick_FieldItem_Medal_C_4",
+      "worldPosition": [
+        6702,
+        584,
+        19
+      ],
+      "landmarkPackages": [
+        "/Game/Map/Town/04Dir/04Dir_01/BG/Town_04Dir_01_BG.umap"
+      ],
+      "guideScreenshots": [
+        "https://www.powerpyx.com/wp-content/uploads/final-fantasy-resonance-tablet-shards-guide-14.jpg"
+      ],
+      "evidence": [
+        "BG CrateSquare001 stack at(6650,760,0),184 units away, matches the crates in guide image; this is the second main intersection."
+      ]
+    },
+    {
+      "guideNo": 15,
+      "mapId": 2061,
+      "uniqueId": 12,
+      "package": "/Game/Map/Town/04Dir/04Dir_02/GD/Town_04Dir_02_01_GD.umap",
+      "actor": "BP_MapGimmick_FieldItem_Medal_C_1",
+      "worldPosition": [
+        6778,
+        -7576,
+        1607
+      ],
+      "guideScreenshots": [
+        "https://www.powerpyx.com/wp-content/uploads/final-fantasy-resonance-tablet-shards-guide-15.jpg"
+      ],
+      "evidence": [
+        "Guide follows the ascending side stairs to the upper shipyard walkway; native Z1607 versus the other shard at Z=31."
+      ]
+    },
+    {
+      "guideNo": 16,
+      "mapId": 2061,
+      "uniqueId": 13,
+      "package": "/Game/Map/Town/04Dir/04Dir_02/GD/Town_04Dir_02_01_GD.umap",
+      "actor": "BP_MapGimmick_FieldItem_Medal_C_3",
+      "worldPosition": [
+        6722,
+        5122,
+        31
+      ],
+      "guideScreenshots": [
+        "https://www.powerpyx.com/wp-content/uploads/final-fantasy-resonance-tablet-shards-guide-16.jpg"
+      ],
+      "evidence": [
+        "Guide follows descending stairs to the lower metal walkway; native Z31 versus the other shard at Z=1607."
+      ]
+    },
+    {
+      "guideNo": 17,
+      "mapId": 3050,
+      "uniqueId": 22,
+      "package": "/Game/Map/Dng/04Dir/04Dir_40/GD/Dng_04Dir_40_01_GD.umap",
+      "actor": "BP_MapGimmick_FieldItem_Medal_C_10",
+      "worldPosition": [
+        5812,
+        6583,
+        409.500139
+      ],
+      "landmarkPackages": [
+        "/Game/Map/Dng/04Dir/04Dir_40/BG/Dng_04Dir_40_01_BG.umap"
+      ],
+      "guideScreenshots": [
+        "https://www.powerpyx.com/wp-content/uploads/final-fantasy-resonance-tablet-shards-guide-17.jpg"
+      ],
+      "evidence": [
+        "Native capture Dng_04Dir_40_0 square-loop corner matches the harder-path minimap in guide image17; UID21 is instead beside the easier-route tree."
+      ]
+    },
+    {
+      "guideNo": 18,
+      "mapId": 3050,
+      "uniqueId": 21,
+      "package": "/Game/Map/Dng/04Dir/04Dir_40/GD/Dng_04Dir_40_01_GD.umap",
+      "actor": "BP_MapGimmick_FieldItem_Medal_C_1",
+      "worldPosition": [
+        9671,
+        356,
+        2019
+      ],
+      "landmarkPackages": [
+        "/Game/Map/Dng/04Dir/04Dir_40/BG/Dng_04Dir_40_01_BG.umap"
+      ],
+      "guideScreenshots": [
+        "https://www.powerpyx.com/wp-content/uploads/final-fantasy-resonance-tablet-shards-guide-18.jpg"
+      ],
+      "evidence": [
+        "BG snowtree002 at(9502.86,572.44,1964.20),280 units away, matches the tree beside the easier-route ladder in guide image18."
+      ]
+    },
+    {
+      "guideNo": 19,
+      "mapId": 3050,
+      "uniqueId": 23,
+      "package": "/Game/Map/Dng/04Dir/04Dir_40/GD/Dng_04Dir_40_01_GD.umap",
+      "actor": "BP_MapGimmick_FieldItem_Medal_C_4",
+      "worldPosition": [
+        8561,
+        -2590,
+        2422
+      ],
+      "landmarkPackages": [
+        "/Game/Map/Dng/04Dir/04Dir_40/BG/Dng_04Dir_40_01_BG.umap"
+      ],
+      "guideScreenshots": [
+        "https://www.powerpyx.com/wp-content/uploads/final-fantasy-resonance-tablet-shards-guide-19.jpg"
+      ],
+      "evidence": [
+        "Native captures place this on the separate upper shrine approach; nearby rockGround002 is146 units away, matching guide image19 rock corner."
+      ]
+    },
+    {
+      "guideNo": 20,
+      "mapId": 2050,
+      "uniqueId": 6,
+      "package": "/Game/Map/Town/04Dir/04Dir_20/GD/Town_04Dir_20_01_GD.umap",
+      "actor": "BP_MapGimmick_FieldItem_Medal_C_3",
+      "worldPosition": [
+        4855,
+        -5749,
+        -1967
+      ],
+      "guideScreenshots": [
+        "https://www.powerpyx.com/wp-content/uploads/final-fantasy-resonance-tablet-shards-guide-20.jpg"
+      ],
+      "evidence": [
+        "Guide image shows the higher western catwalk; native Z-1967 versus UID5 on the lower floor at Z=-2762."
+      ]
+    },
+    {
+      "guideNo": 21,
+      "mapId": 2050,
+      "uniqueId": 5,
+      "package": "/Game/Map/Town/04Dir/04Dir_20/GD/Town_04Dir_20_01_GD.umap",
+      "actor": "BP_MapGimmick_FieldItem_Medal_C_1",
+      "worldPosition": [
+        4871,
+        -5050,
+        -2762
+      ],
+      "guideScreenshots": [
+        "https://www.powerpyx.com/wp-content/uploads/final-fantasy-resonance-tablet-shards-guide-21.jpg"
+      ],
+      "evidence": [
+        "Guide image shows the lower forge floor below the other western catwalk; native Z-2762 versus UID6 at Z=-1967."
+      ]
+    },
+    {
+      "guideNo": 22,
+      "mapId": 3060,
+      "uniqueId": 71,
+      "package": "/Game/Map/Dng/04Dir/04Dir_41/GD/Dng_04Dir_41_03_GD.umap",
+      "actor": "BP_MapGimmick_FieldItem_Medal_C_0",
+      "worldPosition": [
+        1553,
+        -5547,
+        28
+      ],
+      "guideScreenshots": [
+        "https://www.powerpyx.com/wp-content/uploads/final-fantasy-resonance-tablet-shards-guide-22.jpg"
+      ],
+      "evidence": [
+        "Initial shipyard floor atnative Z28; later guide images ascend two lift levels toZ811 andZ1600."
+      ]
+    },
+    {
+      "guideNo": 23,
+      "mapId": 3060,
+      "uniqueId": 78,
+      "package": "/Game/Map/Dng/04Dir/04Dir_41/GD/Dng_04Dir_41_03_GD.umap",
+      "actor": "BP_MapGimmick_FieldItem_Medal_C_1",
+      "worldPosition": [
+        2195,
+        9299,
+        811
+      ],
+      "guideScreenshots": [
+        "https://www.powerpyx.com/wp-content/uploads/final-fantasy-resonance-tablet-shards-guide-23.jpg"
+      ],
+      "evidence": [
+        "First-lift intermediate walkway atnative Z811, between initial floorZ28 and second-lift floorZ1600."
+      ]
+    },
+    {
+      "guideNo": 24,
+      "mapId": 3060,
+      "uniqueId": 79,
+      "package": "/Game/Map/Dng/04Dir/04Dir_41/GD/Dng_04Dir_41_03_GD.umap",
+      "actor": "BP_MapGimmick_FieldItem_Medal_C_2",
+      "worldPosition": [
+        4550,
+        13247,
+        1600
+      ],
+      "guideScreenshots": [
+        "https://www.powerpyx.com/wp-content/uploads/final-fantasy-resonance-tablet-shards-guide-24.jpg"
+      ],
+      "evidence": [
+        "Second-lift upper container walkway atnative Z1600; guide sequence and visible elevation distinguish the other two floors."
+      ]
+    },
+    {
+      "guideNo": 25,
+      "mapId": 3070,
+      "uniqueId": 59,
+      "package": "/Game/Map/Dng/04Dir/04Dir_42/GD/Dng_04Dir_42_01_GD.umap",
+      "actor": "BP_MapGimmick_FieldItem_Medal_C_1",
+      "worldPosition": [
+        7632,
+        37609,
+        814
+      ],
+      "guideScreenshots": [
+        "https://www.powerpyx.com/wp-content/uploads/final-fantasy-resonance-tablet-shards-guide-25.jpg"
+      ],
+      "evidence": [
+        "Initial octagonal shrine elevator chamber is the southernmost of the three native positions, preceding the upper staircase and return platform."
+      ]
+    },
+    {
+      "guideNo": 26,
+      "mapId": 3070,
+      "uniqueId": 60,
+      "package": "/Game/Map/Dng/04Dir/04Dir_42/GD/Dng_04Dir_42_01_GD.umap",
+      "actor": "BP_MapGimmick_FieldItem_Medal_C_3",
+      "worldPosition": [
+        12949,
+        43245,
+        2417
+      ],
+      "guideScreenshots": [
+        "https://www.powerpyx.com/wp-content/uploads/final-fantasy-resonance-tablet-shards-guide-26.jpg"
+      ],
+      "evidence": [
+        "Guide image shows the high staircase/elevator landing atnative Z2417, north of the next platform at X=10775,Z1209."
+      ]
+    },
+    {
+      "guideNo": 27,
+      "mapId": 3070,
+      "uniqueId": 61,
+      "package": "/Game/Map/Dng/04Dir/04Dir_42/GD/Dng_04Dir_42_01_GD.umap",
+      "actor": "BP_MapGimmick_FieldItem_Medal_C_5",
+      "worldPosition": [
+        10775,
+        39637,
+        1209
+      ],
+      "guideScreenshots": [
+        "https://www.powerpyx.com/wp-content/uploads/final-fantasy-resonance-tablet-shards-guide-27.jpg"
+      ],
+      "evidence": [
+        "Guide returns south from the high staircase to the lower elevator platform at X=10775,Z1209; UID60 is north at X=12949,Z2417."
+      ]
+    },
+    {
+      "guideNo": 28,
+      "mapId": 2070,
+      "uniqueId": 26,
+      "package": "/Game/Map/Town/05Old/05Old_01/GD/Town_05Old_01_01_GD.umap",
+      "actor": "BP_MapGimmick_FieldItem_Medal_C_1",
+      "worldPosition": [
+        598,
+        874,
+        59
+      ],
+      "landmarkPackages": [
+        "/Game/Map/Town/05Old/05Old_01/BG/Town_05Old_01_01_BG.umap"
+      ],
+      "guideScreenshots": [
+        "https://www.powerpyx.com/wp-content/uploads/final-fantasy-resonance-tablet-shards-guide-28.jpg"
+      ],
+      "evidence": [
+        "Boat landing is the entrance-level native position at Z=59; all other city shards lie farther north on distinct levels."
+      ]
+    },
+    {
+      "guideNo": 29,
+      "mapId": 2070,
+      "uniqueId": 29,
+      "package": "/Game/Map/Town/05Old/05Old_01/GD/Town_05Old_01_01_GD.umap",
+      "actor": "BP_MapGimmick_FieldItem_Medal_C_2",
+      "worldPosition": [
+        4857,
+        -752,
+        143
+      ],
+      "landmarkPackages": [
+        "/Game/Map/Town/05Old/05Old_01/BG/Town_05Old_01_01_BG.umap"
+      ],
+      "guideScreenshots": [
+        "https://www.powerpyx.com/wp-content/uploads/final-fantasy-resonance-tablet-shards-guide-29.jpg"
+      ],
+      "evidence": [
+        "BG chair002 benches at(4747.53,-944.17,120),222 units away, and statue001 identify the statue-pool bench in guide image29."
+      ]
+    },
+    {
+      "guideNo": 30,
+      "mapId": 2070,
+      "uniqueId": 27,
+      "package": "/Game/Map/Town/05Old/05Old_01/GD/Town_05Old_01_01_GD.umap",
+      "actor": "BP_MapGimmick_FieldItem_Medal_C_3",
+      "worldPosition": [
+        8329,
+        5091,
+        1056
+      ],
+      "landmarkPackages": [
+        "/Game/Map/Town/05Old/05Old_01/BG/Town_05Old_01_01_BG.umap"
+      ],
+      "guideScreenshots": [
+        "https://www.powerpyx.com/wp-content/uploads/final-fantasy-resonance-tablet-shards-guide-30.jpg"
+      ],
+      "evidence": [
+        "BG planter001 at(8226,5020,1040),126 units away, is one of the repeated planters along the elevated diagonal bridge in guide image30."
+      ]
+    },
+    {
+      "guideNo": 31,
+      "mapId": 2070,
+      "uniqueId": 28,
+      "package": "/Game/Map/Town/05Old/05Old_01/GD/Town_05Old_01_01_GD.umap",
+      "actor": "BP_MapGimmick_FieldItem_Medal_C_5",
+      "worldPosition": [
+        7866,
+        -19,
+        735
+      ],
+      "landmarkPackages": [
+        "/Game/Map/Town/05Old/05Old_01/BG/Town_05Old_01_01_BG.umap"
+      ],
+      "guideScreenshots": [
+        "https://www.powerpyx.com/wp-content/uploads/final-fantasy-resonance-tablet-shards-guide-31.jpg"
+      ],
+      "evidence": [
+        "BG tree001 at(7630,-20,760),237 units away, and planter002 identify the raised tree plaza in guide image31."
+      ]
+    },
+    {
+      "guideNo": 32,
+      "mapId": 3080,
+      "uniqueId": 38,
+      "package": "/Game/Map/Dng/05Old/05Old_40/GD/Dng_05Old_40_01_GD.umap",
+      "actor": "BP_MapGimmick_FieldItem_Medal_C_1",
+      "worldPosition": [
+        2645,
+        11122,
+        16
+      ],
+      "guideScreenshots": [
+        "https://www.powerpyx.com/wp-content/uploads/final-fantasy-resonance-tablet-shards-guide-32.jpg"
+      ],
+      "evidence": [
+        "Guide shows the waterside boat landing; native Z16 is uniquely at water level, below the waterfall and ladder ledges."
+      ]
+    },
+    {
+      "guideNo": 33,
+      "mapId": 3080,
+      "uniqueId": 39,
+      "package": "/Game/Map/Dng/05Old/05Old_40/GD/Dng_05Old_40_01_GD.umap",
+      "actor": "BP_MapGimmick_FieldItem_Medal_C_3",
+      "worldPosition": [
+        2780,
+        1151,
+        810
+      ],
+      "guideScreenshots": [
+        "https://www.powerpyx.com/wp-content/uploads/final-fantasy-resonance-tablet-shards-guide-33.jpg"
+      ],
+      "evidence": [
+        "Guide shows the waterfall ledge above a ladder; native Z810 fits this intermediate stage between water-levelZ16 and later ladder ledgeZ1117."
+      ]
+    },
+    {
+      "guideNo": 34,
+      "mapId": 3080,
+      "uniqueId": 40,
+      "package": "/Game/Map/Dng/05Old/05Old_40/GD/Dng_05Old_40_01_GD.umap",
+      "actor": "BP_MapGimmick_FieldItem_Medal_C_2",
+      "worldPosition": [
+        1736.668826,
+        -9321.94372,
+        1117.214231
+      ],
+      "guideScreenshots": [
+        "https://www.powerpyx.com/wp-content/uploads/final-fantasy-resonance-tablet-shards-guide-34.jpg"
+      ],
+      "evidence": [
+        "Guide shows the later narrow ledge between two ladders; native Z1117 is the highest of these three cave actors."
+      ]
+    },
+    {
+      "guideNo": 35,
+      "mapId": 3100,
+      "uniqueId": 11,
+      "package": "/Game/Map/Dng/05Old/05Old_43/GD/Dng_05Old_43_01_GD.umap",
+      "actor": "BP_MapGimmick_FieldItem_Medal_C_1",
+      "worldPosition": [
+        -138,
+        13952,
+        521
+      ],
+      "guideScreenshots": [
+        "https://www.powerpyx.com/wp-content/uploads/final-fantasy-resonance-tablet-shards-guide-35.jpg"
+      ],
+      "evidence": [
+        "Initial room is the geographically separate native position at Y=13952,Z521; the two waterfall-room actors shareY near-7500."
+      ]
+    },
+    {
+      "guideNo": 36,
+      "mapId": 3100,
+      "uniqueId": 12,
+      "package": "/Game/Map/Dng/05Old/05Old_43/GD/Dng_05Old_43_01_GD.umap",
+      "actor": "BP_MapGimmick_FieldItem_Medal_C_3",
+      "worldPosition": [
+        -1294,
+        -7522,
+        12
+      ],
+      "guideScreenshots": [
+        "https://www.powerpyx.com/wp-content/uploads/final-fantasy-resonance-tablet-shards-guide-36.jpg"
+      ],
+      "evidence": [
+        "Guide shows the lower waterfall platform; native Z12 versus UID13 at Z=1215 north across the same room."
+      ]
+    },
+    {
+      "guideNo": 37,
+      "mapId": 3100,
+      "uniqueId": 13,
+      "package": "/Game/Map/Dng/05Old/05Old_43/GD/Dng_05Old_43_01_GD.umap",
+      "actor": "BP_MapGimmick_FieldItem_Medal_C_5",
+      "worldPosition": [
+        1238,
+        -7845,
+        1215
+      ],
+      "guideScreenshots": [
+        "https://www.powerpyx.com/wp-content/uploads/final-fantasy-resonance-tablet-shards-guide-37.jpg"
+      ],
+      "evidence": [
+        "Guide shows the higher northern rock in the same waterfall room; native X1238,Z1215 versus UID12 at X=-1294,Z12."
+      ]
+    },
+    {
+      "guideNo": 38,
+      "mapId": 2090,
+      "uniqueId": 6,
+      "package": "/Game/Map/Town/05Old/05Old_21/GD/Town_05Old_21_01_GD.umap",
+      "actor": "BP_MapGimmick_FieldItem_Medal_C_1",
+      "worldPosition": [
+        1344,
+        3790,
+        133
+      ],
+      "landmarkPackages": [
+        "/Game/Map/Town/05Old/05Old_21/BG/Town_05Old_21_BG.umap"
+      ],
+      "guideScreenshots": [
+        "https://www.powerpyx.com/wp-content/uploads/final-fantasy-resonance-tablet-shards-guide-38.jpg"
+      ],
+      "evidence": [
+        "BG Well001 at(1400,3700,100),111 units away, identifies the southern well island in guide image38."
+      ]
+    },
+    {
+      "guideNo": 39,
+      "mapId": 2090,
+      "uniqueId": 7,
+      "package": "/Game/Map/Town/05Old/05Old_21/GD/Town_05Old_21_01_GD.umap",
+      "actor": "BP_MapGimmick_FieldItem_Medal_C_3",
+      "worldPosition": [
+        4985,
+        3022,
+        135
+      ],
+      "landmarkPackages": [
+        "/Game/Map/Town/05Old/05Old_21/BG/Town_05Old_21_BG.umap"
+      ],
+      "guideScreenshots": [
+        "https://www.powerpyx.com/wp-content/uploads/final-fantasy-resonance-tablet-shards-guide-39.jpg"
+      ],
+      "evidence": [
+        "BG mapletree005 at(5000,3100,100),87 units away, identifies the northern tree before the bridge in guide image39."
+      ]
+    },
+    {
+      "guideNo": 40,
+      "mapId": 3110,
+      "uniqueId": 59,
+      "package": "/Game/Map/Dng/05Old/05Old_44/GD/Dng_05Old_44_01_GD.umap",
+      "actor": "BP_MapGimmick_FieldItem_Medal_C_3",
+      "worldPosition": [
+        -1108,
+        12631,
+        127
+      ],
+      "guideScreenshots": [
+        "https://www.powerpyx.com/wp-content/uploads/final-fantasy-resonance-tablet-shards-guide-40.jpg"
+      ],
+      "evidence": [
+        "Circular-platform room is the isolated earlier native location at Y=12631,Z127; later water-control room actors lie nearY31000."
+      ]
+    },
+    {
+      "guideNo": 41,
+      "mapId": 3110,
+      "uniqueId": 60,
+      "package": "/Game/Map/Dng/05Old/05Old_44/GD/Dng_05Old_44_01_GD.umap",
+      "actor": "BP_MapGimmick_FieldItem_Medal_C_5",
+      "worldPosition": [
+        620,
+        31745,
+        -1874
+      ],
+      "guideScreenshots": [
+        "https://www.powerpyx.com/wp-content/uploads/final-fantasy-resonance-tablet-shards-guide-41.jpg"
+      ],
+      "evidence": [
+        "Guide boat ledge is the intermediate floor in the later water-control room atnative Z-1874, above the final ladder landing at Z=-3481."
+      ]
+    },
+    {
+      "guideNo": 42,
+      "mapId": 3110,
+      "uniqueId": 58,
+      "package": "/Game/Map/Dng/05Old/05Old_44/GD/Dng_05Old_44_01_GD.umap",
+      "actor": "BP_MapGimmick_FieldItem_Medal_C_1",
+      "worldPosition": [
+        -589,
+        30687,
+        -3481
+      ],
+      "guideScreenshots": [
+        "https://www.powerpyx.com/wp-content/uploads/final-fantasy-resonance-tablet-shards-guide-42.jpg"
+      ],
+      "evidence": [
+        "Guide shows the final long-ladder lower landing; native Z-3481 is the lowest floor, beneath the boat ledge at Z=-1874."
+      ]
+    },
+    {
+      "guideNo": 43,
+      "mapId": 2100,
+      "uniqueId": 2,
+      "package": "/Game/Map/Town/06Zol/06Zol_20/GD/Town_06Zol_20_01_GD.umap",
+      "actor": "BP_MapGimmick_FieldItem_Medal_C_1",
+      "worldPosition": [
+        -804,
+        -2875,
+        24
+      ],
+      "guideScreenshots": [
+        "https://www.powerpyx.com/wp-content/uploads/final-fantasy-resonance-tablet-shards-guide-43.jpg"
+      ],
+      "evidence": [
+        "Singleton shard in Mozul Station: only actor key for location."
+      ]
+    },
+    {
+      "guideNo": 44,
+      "mapId": 2102,
+      "uniqueId": 1,
+      "package": "/Game/Map/Town/06Zol/06Zol_23/GD/Town_06Zol_23_01_GD.umap",
+      "actor": "BP_MapGimmick_FieldItem_Medal_C_1",
+      "worldPosition": [
+        421,
+        1722,
+        19
+      ],
+      "guideScreenshots": [
+        "https://www.powerpyx.com/wp-content/uploads/final-fantasy-resonance-tablet-shards-guide-44.jpg"
+      ],
+      "evidence": [
+        "Singleton shard in Capital Station: only actor key for location."
+      ]
+    },
+    {
+      "guideNo": 45,
+      "mapId": 2111,
+      "uniqueId": 4,
+      "package": "/Game/Map/Town/06Zol/06Zol_02/GD/Town_06Zol_02_01_GD.umap",
+      "actor": "BP_MapGimmick_FieldItem_Medal_C_1",
+      "worldPosition": [
+        505,
+        1157,
+        25
+      ],
+      "guideScreenshots": [
+        "https://www.powerpyx.com/wp-content/uploads/final-fantasy-resonance-tablet-shards-guide-45.jpg"
+      ],
+      "evidence": [
+        "Singleton shard in Castle Plaza: only actor key for location."
+      ]
+    },
+    {
+      "guideNo": 46,
+      "mapId": 2113,
+      "uniqueId": 4,
+      "package": "/Game/Map/Town/06Zol/06Zol_04/GD/Town_06Zol_04_01_GD.umap",
+      "actor": "BP_MapGimmick_FieldItem_Medal_C_1",
+      "worldPosition": [
+        -158,
+        784,
+        11
+      ],
+      "guideScreenshots": [
+        "https://www.powerpyx.com/wp-content/uploads/final-fantasy-resonance-tablet-shards-guide-46.jpg"
+      ],
+      "evidence": [
+        "Singleton shard in Imperial Residences: only actor key for location."
+      ]
+    },
+    {
+      "guideNo": 47,
+      "mapId": 2114,
+      "uniqueId": 2,
+      "package": "/Game/Map/Town/06Zol/06Zol_05/GD/Town_06Zol_05_01_GD.umap",
+      "actor": "BP_MapGimmick_FieldItem_Medal_C_1",
+      "worldPosition": [
+        916,
+        112,
+        13
+      ],
+      "guideScreenshots": [
+        "https://www.powerpyx.com/wp-content/uploads/final-fantasy-resonance-tablet-shards-guide-47.jpg"
+      ],
+      "evidence": [
+        "Singleton shard in Slums: only actor key for location."
+      ]
+    },
+    {
+      "guideNo": 48,
+      "mapId": 3140,
+      "uniqueId": 11,
+      "package": "/Game/Map/Dng/06Zol/06Zol_42/GD/Dng_06Zol_42_01_GD.umap",
+      "actor": "BP_MapGimmick_FieldItem_Medal_C_3",
+      "worldPosition": [
+        -7154,
+        8664,
+        -1400
+      ],
+      "guideScreenshots": [
+        "https://www.powerpyx.com/wp-content/uploads/final-fantasy-resonance-tablet-shards-guide-48.jpg"
+      ],
+      "evidence": [
+        "handrails at Z=-800 around Y=8485/8660 over shard Z=-1400; matches screenshot48 below elevated metal walkway."
+      ]
+    },
+    {
+      "guideNo": 49,
+      "mapId": 3140,
+      "uniqueId": 10,
+      "package": "/Game/Map/Dng/06Zol/06Zol_42/GD/Dng_06Zol_42_01_GD.umap",
+      "actor": "BP_MapGimmick_FieldItem_Medal_C_1",
+      "worldPosition": [
+        -7608,
+        14620,
+        -775
+      ],
+      "guideScreenshots": [
+        "https://www.powerpyx.com/wp-content/uploads/final-fantasy-resonance-tablet-shards-guide-49.jpg"
+      ],
+      "evidence": [
+        "Ironfence001_3 at (-7600,14000,-805), west of shard (-7608,14620,-775), lantern east at (-7600,15201,-620); matches screenshot49 fence left and lit niche right."
+      ]
+    },
+    {
+      "guideNo": 50,
+      "mapId": 2120,
+      "uniqueId": 11,
+      "package": "/Game/Map/Town/06Zol/06Zol_21/GD/Town_06Zol_21_01_GD.umap",
+      "actor": "BP_MapGimmick_FieldItem_Medal_C_3",
+      "worldPosition": [
+        2282,
+        -2063,
+        821
+      ],
+      "guideScreenshots": [
+        "https://www.powerpyx.com/wp-content/uploads/final-fantasy-resonance-tablet-shards-guide-50.jpg"
+      ],
+      "evidence": [
+        "upper shard Z=821 beside TarpedCrate001_3 (2042,-2008,805), AmmoCrate001_6 (1987,-1957,912), Pallet001_5 (2602,-2134,863); matches screenshot50 elevated crate platform above Jake room."
+      ]
+    },
+    {
+      "guideNo": 51,
+      "mapId": 2120,
+      "uniqueId": 10,
+      "package": "/Game/Map/Town/06Zol/06Zol_21/GD/Town_06Zol_21_01_GD.umap",
+      "actor": "BP_MapGimmick_FieldItem_Medal_C_1",
+      "worldPosition": [
+        2850,
+        1140,
+        214
+      ],
+      "guideScreenshots": [
+        "https://www.powerpyx.com/wp-content/uploads/final-fantasy-resonance-tablet-shards-guide-51.jpg"
+      ],
+      "evidence": [
+        "pillar001_3 (2511,1267,200) and handrail001_17 (2860,1035,200) beside shard (2850,1140,214); matches screenshot51 metal pillar and railing near conference-room door."
+      ]
+    },
+    {
+      "guideNo": 52,
+      "mapId": 3130,
+      "uniqueId": 46,
+      "package": "/Game/Map/Dng/06Zol/06Zol_41/GD/Dng_06Zol_41_01_GD.umap",
+      "actor": "BP_MapGimmick_FieldItem_Medal_C_4",
+      "worldPosition": [
+        3243,
+        8854,
+        712
+      ],
+      "guideScreenshots": [
+        "https://www.powerpyx.com/wp-content/uploads/final-fantasy-resonance-tablet-shards-guide-52.jpg"
+      ],
+      "evidence": [
+        "western shard (3243,8854,712) beside small Ladder_SplineMesh001 at (3020,9150,240), switch2 at (2700,9150,300), raised-switch walkway. mid-bg-3130.json shows adjacent western wall and lamp. Screenshot52 shows western lower girder path below chest platform, distinct from higher rotation grid."
+      ]
+    },
+    {
+      "guideNo": 53,
+      "mapId": 3130,
+      "uniqueId": 45,
+      "package": "/Game/Map/Dng/06Zol/06Zol_41/GD/Dng_06Zol_41_01_GD.umap",
+      "actor": "BP_MapGimmick_FieldItem_Medal_C_1",
+      "worldPosition": [
+        3144,
+        12498,
+        2111
+      ],
+      "guideScreenshots": [
+        "https://www.powerpyx.com/wp-content/uploads/final-fantasy-resonance-tablet-shards-guide-53-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/final-fantasy-resonance-tablet-shards-guide-53-2.jpg"
+      ],
+      "evidence": [
+        "shard directly on catWalk3 (3145,12500,2125), only14 units from root (3144,12498,2111). mid-gd-3130.json has SequentialRotationBridge_2/_10 within564/573 units, matching screenshot53 rotating bridge maze reached by long ladder."
+      ]
+    },
+    {
+      "guideNo": 54,
+      "mapId": 3150,
+      "uniqueId": 3,
+      "package": "/Game/Map/Dng/06Zol/06Zol_43/GD/Dng_06Zol_43_01_GD.umap",
+      "actor": "BP_MapGimmick_FieldItem_Medal_C_3",
+      "worldPosition": [
+        941,
+        -70598,
+        11
+      ],
+      "guideScreenshots": [
+        "https://www.powerpyx.com/wp-content/uploads/final-fantasy-resonance-tablet-shards-guide-54.jpg"
+      ],
+      "evidence": [
+        "Capture Dng_06Zol_43_6 projects shard to right/east cell beside central vertical stairs. Exact cell/door-notches match screenshot54."
+      ]
+    },
+    {
+      "guideNo": 55,
+      "mapId": 3150,
+      "uniqueId": 2,
+      "package": "/Game/Map/Dng/06Zol/06Zol_43/GD/Dng_06Zol_43_01_GD.umap",
+      "actor": "BP_MapGimmick_FieldItem_Medal_C_1",
+      "worldPosition": [
+        887,
+        -36515,
+        13
+      ],
+      "guideScreenshots": [
+        "https://www.powerpyx.com/wp-content/uploads/final-fantasy-resonance-tablet-shards-guide-55.jpg"
+      ],
+      "evidence": [
+        "Capture Dng_06Zol_43_2 projects shard to left/west cell beside central vertical stairs. Exact cell/door-notches match separately retrieved guide-55.jpg, which article incorrectly replaces with guide54."
+      ]
+    },
+    {
+      "guideNo": 56,
+      "mapId": 3160,
+      "uniqueId": 10,
+      "package": "/Game/Map/Dng/06Zol/06Zol_44/GD/Dng_06Zol_44_01_GD.umap",
+      "actor": "BP_MapGimmick_FieldItem_Medal_C_1",
+      "worldPosition": [
+        29089,
+        -1073,
+        414
+      ],
+      "guideScreenshots": [
+        "https://www.powerpyx.com/wp-content/uploads/final-fantasy-resonance-tablet-shards-guide-56.jpg"
+      ],
+      "evidence": [
+        "paired horse statue actors attach to pedestal components at (28935,-897,400) and (28935,897,400). Shard (29089,-1073,414) is immediately northwest/behind WEST horse pedestal, matching screenshot56 left horse at throne stairs. Horse local coordinates require parent-scale composition; pedestal world positions are explicit."
+      ]
+    },
+    {
+      "guideNo": 57,
+      "mapId": 3160,
+      "uniqueId": 11,
+      "package": "/Game/Map/Dng/06Zol/06Zol_44/GD/Dng_06Zol_44_01_GD.umap",
+      "actor": "BP_MapGimmick_FieldItem_Medal_C_5",
+      "worldPosition": [
+        30460,
+        3846,
+        1196
+      ],
+      "guideScreenshots": [
+        "https://www.powerpyx.com/wp-content/uploads/final-fantasy-resonance-tablet-shards-guide-57.jpg"
+      ],
+      "evidence": [
+        "upstairs side-room shard (30460,3846,1196) sits beside bookshelf3 (30460,3950,1180), vase001_04 (30570,3850,1180) and bookshelf2 (30620,3950,1180), with desk/chairs nearby. mid-gd-3160.json places first east-wing doorway at (30322.5,3200,1215), matching screenshot57 first right-side room and southeast corner."
+      ]
+    },
+    {
+      "guideNo": 58,
+      "mapId": 2016,
+      "uniqueId": 2,
+      "package": "/Game/Map/Town/01Gra/01Gra_05/GD/Town_01Gra_05_01_GD.umap",
+      "actor": "BP_MapGimmick_FieldItem_Medal_C_1",
+      "worldPosition": [
+        25789,
+        -10567,
+        40
+      ],
+      "guideScreenshots": [
+        "https://www.powerpyx.com/wp-content/uploads/final-fantasy-resonance-tablet-shards-guide-58.jpg"
+      ],
+      "evidence": [
+        "Singleton shard in Grandshelt Colosseum: only actor key for location."
+      ]
+    },
+    {
+      "guideNo": 59,
+      "mapId": 2130,
+      "uniqueId": 16,
+      "package": "/Game/Map/Town/07Mys/07Mys_01/GD/Town_07Mys_01_01_GD.umap",
+      "actor": "BP_MapGimmick_FieldItem_Medal_C_1",
+      "worldPosition": [
+        12238,
+        1548,
+        61
+      ],
+      "guideScreenshots": [
+        "https://www.powerpyx.com/wp-content/uploads/final-fantasy-resonance-tablet-shards-guide-59.jpg"
+      ],
+      "evidence": [
+        "main entrance transition point ID0 (9920,0,400) and entry portal (10693,913,395) near shard (12238,1548,61). Only remaining ground-level shard after independently matching storefront and upper fountain."
+      ]
+    },
+    {
+      "guideNo": 60,
+      "mapId": 2130,
+      "uniqueId": 17,
+      "package": "/Game/Map/Town/07Mys/07Mys_01/GD/Town_07Mys_01_01_GD.umap",
+      "actor": "BP_MapGimmick_FieldItem_Medal_C_3",
+      "worldPosition": [
+        16913,
+        3019,
+        170
+      ],
+      "guideScreenshots": [
+        "https://www.powerpyx.com/wp-content/uploads/final-fantasy-resonance-tablet-shards-guide-60.jpg"
+      ],
+      "evidence": [
+        "TWO crates box002 (16800,3100,170) and box15 (16600,3150,170), within139/339 units of shard (16913,3019,170). Shop_Signboard002/003 at X18080 immediately north; matches screenshot60 south of weapon shop beside two crates."
+      ]
+    },
+    {
+      "guideNo": 61,
+      "mapId": 2130,
+      "uniqueId": 18,
+      "package": "/Game/Map/Town/07Mys/07Mys_01/GD/Town_07Mys_01_01_GD.umap",
+      "actor": "BP_MapGimmick_FieldItem_Medal_C_5",
+      "worldPosition": [
+        18651,
+        2979,
+        5362
+      ],
+      "guideScreenshots": [
+        "https://www.powerpyx.com/wp-content/uploads/final-fantasy-resonance-tablet-shards-guide-61.jpg"
+      ],
+      "evidence": [
+        "elevated groundsetpillar platform Z5310 and fountain waterfoam around (19908,1612,5324), near shard (18651,2979,5362); uniquely matches upper circular fountain platform in screenshot61."
+      ]
+    },
+    {
+      "guideNo": 62,
+      "mapId": 3190,
+      "uniqueId": 25,
+      "package": "/Game/Map/Dng/07Mys/07Mys_42/GD/Dng_07Mys_42_01_GD.umap",
+      "actor": "BP_MapGimmick_FieldItem_Medal_C_1",
+      "worldPosition": [
+        29632,
+        45864,
+        508
+      ],
+      "guideScreenshots": [
+        "https://www.powerpyx.com/wp-content/uploads/final-fantasy-resonance-tablet-shards-guide-99.jpg"
+      ],
+      "evidence": [
+        "Only low Arcane Library shard, root Z508. Actual paragraph62 image is guide-99.jpg and shows ground-floor writing desks near entrance; contrasts uniquely with other library shard Z12226."
+      ]
+    },
+    {
+      "guideNo": 63,
+      "mapId": 2140,
+      "uniqueId": 3,
+      "package": "/Game/Map/Town/07Mys/07Mys_20/GD/Town_07Mys_20_GD.umap",
+      "actor": "BP_MapGimmick_FieldItem_Medal_C_1",
+      "worldPosition": [
+        3630,
+        -3116,
+        -5
+      ],
+      "guideScreenshots": [
+        "https://www.powerpyx.com/wp-content/uploads/final-fantasy-resonance-tablet-shards-guide-63.jpg"
+      ],
+      "evidence": [
+        "shard (3630,-3116,-5) lies between potteryA4 (3607,-3017,-5),101 units away, and Bench4 (3675,-3265,-20),156 units away. Matches screenshot63 and guide entrance bench/pot description exactly."
+      ]
+    },
+    {
+      "guideNo": 64,
+      "mapId": 2140,
+      "uniqueId": 4,
+      "package": "/Game/Map/Town/07Mys/07Mys_20/GD/Town_07Mys_20_GD.umap",
+      "actor": "BP_MapGimmick_FieldItem_Medal_C_3",
+      "worldPosition": [
+        2548,
+        2975,
+        24
+      ],
+      "guideScreenshots": [
+        "https://www.powerpyx.com/wp-content/uploads/final-fantasy-resonance-tablet-shards-guide-64.jpg"
+      ],
+      "evidence": [
+        "snowmanbody001 and snowmanhead001 at (2583,2866,-21),123 units from shard (2548,2975,24), with snowtrees and shovel nearby. Matches screenshot64 snowman outside igloo."
+      ]
+    },
+    {
+      "guideNo": 65,
+      "mapId": 3180,
+      "uniqueId": 13,
+      "package": "/Game/Map/Dng/07Mys/07Mys_41/GD/Dng_07Mys_41_01_GD.umap",
+      "actor": "BP_MapGimmick_FieldItem_Medal_C_1",
+      "worldPosition": [
+        176,
+        -4233,
+        111
+      ],
+      "guideScreenshots": [
+        "https://www.powerpyx.com/wp-content/uploads/final-fantasy-resonance-tablet-shards-guide-65.jpg"
+      ],
+      "evidence": [
+        "broken templePillar001_breack002 at (1000,-4600,200) and chest (-109,-4926,170) beside shard (176,-4233,111), matching fallen pillar and chest screenshot65."
+      ]
+    },
+    {
+      "guideNo": 66,
+      "mapId": 3180,
+      "uniqueId": 14,
+      "package": "/Game/Map/Dng/07Mys/07Mys_41/GD/Dng_07Mys_41_01_GD.umap",
+      "actor": "BP_MapGimmick_FieldItem_Medal_C_3",
+      "worldPosition": [
+        2234,
+        -26980,
+        504
+      ],
+      "guideScreenshots": [
+        "https://www.powerpyx.com/wp-content/uploads/final-fantasy-resonance-tablet-shards-guide-66.jpg"
+      ],
+      "evidence": [
+        "SavePoint at (3495,-25880,680) northeast/above shard (2234,-26980,504), matching screenshot66 just southwest of SavePoint down stairs."
+      ]
+    },
+    {
+      "guideNo": 67,
+      "mapId": 3190,
+      "uniqueId": 26,
+      "package": "/Game/Map/Dng/07Mys/07Mys_42/GD/Dng_07Mys_42_01_GD.umap",
+      "actor": "BP_MapGimmick_FieldItem_Medal_C_3",
+      "worldPosition": [
+        30200,
+        44714,
+        12226
+      ],
+      "guideScreenshots": [
+        "https://www.powerpyx.com/wp-content/uploads/final-fantasy-resonance-tablet-shards-guide-62.jpg"
+      ],
+      "evidence": [
+        "Only high Arcane Library shard, root Z12226. Actual paragraph67 image is guide-62.jpg, showing upper west balcony. Other library shard is at Z508, uniquely distinguishing ground desks from upper balcony."
+      ]
+    },
+    {
+      "guideNo": 68,
+      "mapId": 3210,
+      "uniqueId": 26,
+      "package": "/Game/Map/Dng/07Mys/07Mys_44/GD/Dng_07Mys_44_01_GD.umap",
+      "actor": "BP_MapGimmick_FieldItem_Medal_C_1",
+      "worldPosition": [
+        -418,
+        14431,
+        82
+      ],
+      "guideScreenshots": [
+        "https://www.powerpyx.com/wp-content/uploads/final-fantasy-resonance-tablet-shards-guide-67.jpg"
+      ],
+      "evidence": [
+        "four Chain00x actors and Gate actors at (-100,16500,0), east of shard (-418,14431,82), matching screenshot68 left of chained locked gate."
+      ]
+    },
+    {
+      "guideNo": 69,
+      "mapId": 3211,
+      "uniqueId": 3,
+      "package": "/Game/Map/Dng/07Mys/07Mys_45/GD/Dng_07Mys_45_01_GD.umap",
+      "actor": "BP_MapGimmick_FieldItem_Medal_C_1",
+      "worldPosition": [
+        -1155,
+        115556,
+        17.0001
+      ],
+      "guideScreenshots": [
+        "https://www.powerpyx.com/wp-content/uploads/final-fantasy-resonance-tablet-shards-guide-68.jpg"
+      ],
+      "evidence": [
+        "shard in tent interior t13 with boxes, foodboxes, pallet, crates around (-1155,115556,17), matching screenshot69 interior of supply tent."
+      ]
+    },
+    {
+      "guideNo": 70,
+      "mapId": 3212,
+      "uniqueId": 4,
+      "package": "/Game/Map/Dng/07Mys/07Mys_46/GD/Dng_07Mys_46_01_GD.umap",
+      "actor": "BP_MapGimmick_FieldItem_Medal_C_1",
+      "worldPosition": [
+        618,
+        -31891,
+        34
+      ],
+      "guideScreenshots": [
+        "https://www.powerpyx.com/wp-content/uploads/final-fantasy-resonance-tablet-shards-guide-69.jpg"
+      ],
+      "evidence": [
+        "shard (618,-31891,34) surrounded by oak trees (692,-32220),(799,-31536),(1259,-31845) and bushes, with no camp props, matching forest clearing screenshot70."
+      ]
+    },
+    {
+      "guideNo": 71,
+      "mapId": 3200,
+      "uniqueId": 4,
+      "package": "/Game/Map/Dng/07Mys/07Mys_43/GD/Dng_07Mys_43_01_GD.umap",
+      "actor": "BP_MapGimmick_FieldItem_Medal_C_1",
+      "worldPosition": [
+        7612,
+        3,
+        928
+      ],
+      "guideScreenshots": [
+        "https://www.powerpyx.com/wp-content/uploads/final-fantasy-resonance-tablet-shards-guide-70.jpg"
+      ],
+      "evidence": [
+        "Tower of Mysidia lowest shard Z928 matches first main entrance/crystal landing. Actual paragraph71 image guide-70.jpg shows bottom entrance area; subsequent three guide screenshots progress upward around same spiral."
+      ]
+    },
+    {
+      "guideNo": 72,
+      "mapId": 3200,
+      "uniqueId": 5,
+      "package": "/Game/Map/Dng/07Mys/07Mys_43/GD/Dng_07Mys_43_01_GD.umap",
+      "actor": "BP_MapGimmick_FieldItem_Medal_C_3",
+      "worldPosition": [
+        6899,
+        1394,
+        2708.582857
+      ],
+      "guideScreenshots": [
+        "https://www.powerpyx.com/wp-content/uploads/final-fantasy-resonance-tablet-shards-guide-71.jpg"
+      ],
+      "evidence": [
+        "Tower of Mysidia second shard by ascent Z2708.582857 matches next spiral-stair landing in paragraph72 image guide-71.jpg, below next two guide positions."
+      ]
+    },
+    {
+      "guideNo": 73,
+      "mapId": 3200,
+      "uniqueId": 6,
+      "package": "/Game/Map/Dng/07Mys/07Mys_43/GD/Dng_07Mys_43_01_GD.umap",
+      "actor": "BP_MapGimmick_FieldItem_Medal_C_5",
+      "worldPosition": [
+        7106,
+        -2384,
+        3224
+      ],
+      "guideScreenshots": [
+        "https://www.powerpyx.com/wp-content/uploads/final-fantasy-resonance-tablet-shards-guide-72.jpg"
+      ],
+      "evidence": [
+        "Tower of Mysidia third shard by ascent Z3224 matches next story-path landing before Azure Pot in paragraph73 image guide-72.jpg. Screenshot shows elevated landing with blue crystals, above previous landing and below snowy upper landing."
+      ]
+    },
+    {
+      "guideNo": 74,
+      "mapId": 3200,
+      "uniqueId": 7,
+      "package": "/Game/Map/Dng/07Mys/07Mys_43/GD/Dng_07Mys_43_01_GD.umap",
+      "actor": "BP_MapGimmick_FieldItem_Medal_C_7",
+      "worldPosition": [
+        8381,
+        1415,
+        4460
+      ],
+      "guideScreenshots": [
+        "https://www.powerpyx.com/wp-content/uploads/final-fantasy-resonance-tablet-shards-guide-73.jpg"
+      ],
+      "evidence": [
+        "Tower of Mysidia highest shard Z4460 matches paragraph74 image guide-73.jpg snowy upper landing. Four guide screenshots and four actor elevations have strictly matching ascent sequence."
+      ]
+    },
+    {
+      "guideNo": 75,
+      "mapId": 3211,
+      "uniqueId": 4,
+      "package": "/Game/Map/Dng/07Mys/07Mys_45/GD/Dng_07Mys_45_01_GD.umap",
+      "actor": "BP_MapGimmick_FieldItem_Medal_C_2",
+      "worldPosition": [
+        -3382,
+        79694,
+        118
+      ],
+      "guideScreenshots": [
+        "https://www.powerpyx.com/wp-content/uploads/final-fantasy-resonance-tablet-shards-guide-74.jpg"
+      ],
+      "evidence": [
+        "shard (-3382,79694,118) within139-268 units of Bale001/AmmoCrate/Lantern props among area04 lodgetents and bonfires; matches screenshot75 outdoor army-camp bales beside tent."
+      ]
+    },
+    {
+      "guideNo": 76,
+      "mapId": 2150,
+      "uniqueId": 9,
+      "package": "/Game/Map/Town/08Gro/08Gro_01/GD/Town_08Gro_01_01_GD.umap",
+      "actor": "BP_MapGimmick_FieldItem_Medal_C_1",
+      "worldPosition": [
+        5909,
+        -3130,
+        503
+      ],
+      "guideScreenshots": [
+        "https://www.powerpyx.com/wp-content/uploads/final-fantasy-resonance-tablet-shards-guide-75.jpg"
+      ],
+      "evidence": [
+        "Only shard actor in this location."
+      ]
+    },
+    {
+      "guideNo": 77,
+      "mapId": 3220,
+      "uniqueId": 34,
+      "package": "/Game/Map/Dng/08Gro/08Gro_40/GD/Dng_08Gro_40_01_GD.umap",
+      "actor": "BP_MapGimmick_FieldItem_Medal_C_1",
+      "worldPosition": [
+        945,
+        -8780,
+        13
+      ],
+      "guideScreenshots": [
+        "https://www.powerpyx.com/wp-content/uploads/final-fantasy-resonance-tablet-shards-guide-76.jpg"
+      ],
+      "evidence": [
+        "Ground-level desks and green teleporter screenshot matches actor Z13; other actors are shelf Z307 and high gantry Z1566."
+      ]
+    },
+    {
+      "guideNo": 78,
+      "mapId": 3220,
+      "uniqueId": 36,
+      "package": "/Game/Map/Dng/08Gro/08Gro_40/GD/Dng_08Gro_40_01_GD.umap",
+      "actor": "BP_MapGimmick_FieldItem_Medal_C_2",
+      "worldPosition": [
+        -776,
+        -14001,
+        307
+      ],
+      "guideScreenshots": [
+        "https://www.powerpyx.com/wp-content/uploads/final-fantasy-resonance-tablet-shards-guide-77.jpg"
+      ],
+      "evidence": [
+        "Shelves screenshot matches actor36 Z307; this deliberately swaps ascending actor order."
+      ]
+    },
+    {
+      "guideNo": 79,
+      "mapId": 3220,
+      "uniqueId": 35,
+      "package": "/Game/Map/Dng/08Gro/08Gro_40/GD/Dng_08Gro_40_01_GD.umap",
+      "actor": "BP_MapGimmick_FieldItem_Medal_C_3",
+      "worldPosition": [
+        422,
+        8243,
+        1566
+      ],
+      "guideScreenshots": [
+        "https://www.powerpyx.com/wp-content/uploads/final-fantasy-resonance-tablet-shards-guide-78.jpg"
+      ],
+      "evidence": [
+        "Long-ladder high gantry screenshot matches actor35 Z1566; this deliberately swaps ascending actor order."
+      ]
+    },
+    {
+      "guideNo": 80,
+      "mapId": 3230,
+      "uniqueId": 6,
+      "package": "/Game/Map/Dng/08Gro/08Gro_41/GD/Dng_08Gro_41_01_GD.umap",
+      "actor": "BP_MapGimmick_FieldItem_Medal_C_2",
+      "worldPosition": [
+        -511,
+        -1560,
+        -82
+      ],
+      "guideScreenshots": [
+        "https://www.powerpyx.com/wp-content/uploads/final-fantasy-resonance-tablet-shards-guide-79.jpg"
+      ],
+      "evidence": [
+        "Native map composite and savepoint transforms: actor6 is just west of normal initial savepoint(-390,-470,-100), in the initial southeast loop. Screenshot file79 has same loop and west-relative position."
+      ]
+    },
+    {
+      "guideNo": 81,
+      "mapId": 3230,
+      "uniqueId": 7,
+      "package": "/Game/Map/Dng/08Gro/08Gro_41/GD/Dng_08Gro_41_01_GD.umap",
+      "actor": "BP_MapGimmick_FieldItem_Medal_C_4",
+      "worldPosition": [
+        8271,
+        -4106,
+        600
+      ],
+      "guideScreenshots": [
+        "https://www.powerpyx.com/wp-content/uploads/final-fantasy-resonance-tablet-shards-guide-80.jpg"
+      ],
+      "evidence": [
+        "Actor7 is east and far below boss/end savepoint(7450,-10900,2550), matching second savepoint ramp and file80 minimap."
+      ]
+    },
+    {
+      "guideNo": 82,
+      "mapId": 2160,
+      "uniqueId": 3,
+      "package": "/Game/Map/Town/08Gro/08Gro_20/GD/Town_08Gro_20_01_GD.umap",
+      "actor": "BP_MapGimmick_FieldItem_Medal_C_2",
+      "worldPosition": [
+        2099,
+        1408,
+        18
+      ],
+      "guideScreenshots": [
+        "https://www.powerpyx.com/wp-content/uploads/final-fantasy-resonance-tablet-shards-guide-81.jpg"
+      ],
+      "evidence": [
+        "Only shard actor in this location."
+      ]
+    },
+    {
+      "guideNo": 83,
+      "mapId": 3240,
+      "uniqueId": 8,
+      "package": "/Game/Map/Dng/08Gro/08Gro_42/GD/Dng_08Gro_42_01_GD.umap",
+      "actor": "BP_MapGimmick_FieldItem_Medal_C_1",
+      "worldPosition": [
+        -638,
+        955,
+        24
+      ],
+      "guideScreenshots": [
+        "https://www.powerpyx.com/wp-content/uploads/final-fantasy-resonance-tablet-shards-guide-82.jpg"
+      ],
+      "evidence": [
+        "Actor8 projects onto southern/right landing of the H-shaped native map capture area1, matching file82 minimap; Z24 is above descending route."
+      ]
+    },
+    {
+      "guideNo": 84,
+      "mapId": 3240,
+      "uniqueId": 9,
+      "package": "/Game/Map/Dng/08Gro/08Gro_42/GD/Dng_08Gro_42_01_GD.umap",
+      "actor": "BP_MapGimmick_FieldItem_Medal_C_3",
+      "worldPosition": [
+        -4924,
+        2369,
+        -1114
+      ],
+      "guideScreenshots": [
+        "https://www.powerpyx.com/wp-content/uploads/final-fantasy-resonance-tablet-shards-guide-83.jpg"
+      ],
+      "evidence": [
+        "Actor9 is the remaining middle descending-route shard at Z-1114; file83 shows blocked eastern stairs after south route. Actors8/10 independently anchored by initial landing and western parallel ladders."
+      ]
+    },
+    {
+      "guideNo": 85,
+      "mapId": 3240,
+      "uniqueId": 10,
+      "package": "/Game/Map/Dng/08Gro/08Gro_42/GD/Dng_08Gro_42_01_GD.umap",
+      "actor": "BP_MapGimmick_FieldItem_Medal_C_5",
+      "worldPosition": [
+        -2925,
+        -1479,
+        -1531
+      ],
+      "guideScreenshots": [
+        "https://www.powerpyx.com/wp-content/uploads/final-fantasy-resonance-tablet-shards-guide-84.jpg"
+      ],
+      "evidence": [
+        "Native GD has parallel ladders at(-1710,1900,-3270) and(-1710,-1900,-3270). Actor10(-2925,-1479,-1531) is south of the western ladder, matching file84 screenshot/description."
+      ]
+    },
+    {
+      "guideNo": 86,
+      "mapId": 3250,
+      "uniqueId": 82,
+      "package": "/Game/Map/Dng/08Gro/08Gro_43/GD/Dng_08Gro_43_01_GD.umap",
+      "actor": "BP_MapGimmick_FieldItem_Medal_C_1",
+      "worldPosition": [
+        1289,
+        59030,
+        2517
+      ],
+      "guideScreenshots": [
+        "https://www.powerpyx.com/wp-content/uploads/final-fantasy-resonance-tablet-shards-guide-85.jpg"
+      ],
+      "evidence": [
+        "Actor82 shares Y~59000 with tall ladder79 at(740,59050,1035). Its balcony shard is(1289,59030,2517), in hidden ladder region, distinct from later elevator room."
+      ]
+    },
+    {
+      "guideNo": 87,
+      "mapId": 3250,
+      "uniqueId": 84,
+      "package": "/Game/Map/Dng/08Gro/08Gro_43/GD/Dng_08Gro_43_01_GD.umap",
+      "actor": "BP_MapGimmick_FieldItem_Medal_C_5",
+      "worldPosition": [
+        92,
+        100654,
+        1672
+      ],
+      "guideScreenshots": [
+        "https://www.powerpyx.com/wp-content/uploads/final-fantasy-resonance-tablet-shards-guide-86.jpg"
+      ],
+      "evidence": [
+        "Actor84(92,100654,1672) lies among six elevator actors at Y100850..103650. Elevator118 is(-450,101350,1650), consistent with violet-crystal platform screenshot file86. Other shard is in separate Y59000 ladder room."
+      ]
+    },
+    {
+      "guideNo": 88,
+      "mapId": 2170,
+      "uniqueId": 4,
+      "package": "/Game/Map/Town/09Pha/09Pha_01/GD/Town_09Pha_01_01_GD.umap",
+      "actor": "BP_MapGimmick_FieldItem_Medal_C_1",
+      "worldPosition": [
+        -872,
+        2148,
+        18
+      ],
+      "guideScreenshots": [
+        "https://www.powerpyx.com/wp-content/uploads/final-fantasy-resonance-tablet-shards-guide-87.jpg"
+      ],
+      "evidence": [
+        "Only shard actor in this location."
+      ]
+    },
+    {
+      "guideNo": 89,
+      "mapId": 3260,
+      "uniqueId": 7,
+      "package": "/Game/Map/Dng/09Pha/09Pha_40/GD/Dng_09Pha_40_01_GD.umap",
+      "actor": "BP_MapGimmick_FieldItem_Medal_C_1",
+      "worldPosition": [
+        -3628,
+        1303,
+        516
+      ],
+      "guideScreenshots": [
+        "https://www.powerpyx.com/wp-content/uploads/final-fantasy-resonance-tablet-shards-guide-88.jpg"
+      ],
+      "evidence": [
+        "Native map composite3260 places actor7 on down-ramp loop in first west branching area; footprint matches file88 minimap."
+      ]
+    },
+    {
+      "guideNo": 90,
+      "mapId": 3260,
+      "uniqueId": 8,
+      "package": "/Game/Map/Dng/09Pha/09Pha_40/GD/Dng_09Pha_40_01_GD.umap",
+      "actor": "BP_MapGimmick_FieldItem_Medal_C_3",
+      "worldPosition": [
+        -6928,
+        3811,
+        1016
+      ],
+      "guideScreenshots": [
+        "https://www.powerpyx.com/wp-content/uploads/final-fantasy-resonance-tablet-shards-guide-89.jpg"
+      ],
+      "evidence": [
+        "Native map composite3260 places actor8 on small platform along vertical path between bridges; footprint matches file89 minimap."
+      ]
+    },
+    {
+      "guideNo": 91,
+      "mapId": 2180,
+      "uniqueId": 0,
+      "package": "/Game/Map/Town/09Pha/09Pha_20/GD/Town_09Pha_20_GD.umap",
+      "actor": "BP_MapGimmick_FieldItem_Medal_C_1",
+      "worldPosition": [
+        -45268,
+        -1625,
+        11
+      ],
+      "guideScreenshots": [
+        "https://www.powerpyx.com/wp-content/uploads/final-fantasy-resonance-tablet-shards-guide-90.jpg"
+      ],
+      "evidence": [
+        "Only shard actor in this location."
+      ]
+    },
+    {
+      "guideNo": 92,
+      "mapId": 3271,
+      "uniqueId": 2,
+      "package": "/Game/Map/Dng/09Pha/09Pha_42/GD/Dng_09Pha_42_01_GD.umap",
+      "actor": "BP_MapGimmick_FieldItem_Medal_C_2",
+      "worldPosition": [
+        3040,
+        -35838,
+        20
+      ],
+      "guideScreenshots": [
+        "https://www.powerpyx.com/wp-content/uploads/final-fantasy-resonance-tablet-shards-guide-91.jpg"
+      ],
+      "evidence": [
+        "CORRECTED ORDER: actor2 projects to northwest bend of U-shaped native capture area0, matching file91 minimap. Adjacent initial normal savepoint at(-2570,-37060,0)."
+      ]
+    },
+    {
+      "guideNo": 93,
+      "mapId": 3271,
+      "uniqueId": 1,
+      "package": "/Game/Map/Dng/09Pha/09Pha_42/GD/Dng_09Pha_42_01_GD.umap",
+      "actor": "BP_MapGimmick_FieldItem_Medal_C_1",
+      "worldPosition": [
+        -4155,
+        37306,
+        121
+      ],
+      "guideScreenshots": [
+        "https://www.powerpyx.com/wp-content/uploads/final-fantasy-resonance-tablet-shards-guide-92.jpg"
+      ],
+      "evidence": [
+        "CORRECTED ORDER: actor1 projects to southwest deadend of native capture area1, matching file92 minimap. Relative to boss/end savepoint(-1465,41200,100), delta(-2690,-3894) is southwest."
+      ]
+    },
+    {
+      "guideNo": 94,
+      "mapId": 3272,
+      "uniqueId": 0,
+      "package": "/Game/Map/Dng/09Pha/09Pha_43/GD/Dng_09Pha_43_01_GD.umap",
+      "actor": "BP_MapGimmick_FieldItem_Medal_C_1",
+      "worldPosition": [
+        8030,
+        -1350,
+        401
+      ],
+      "guideScreenshots": [
+        "https://www.powerpyx.com/wp-content/uploads/final-fantasy-resonance-tablet-shards-guide-93.jpg"
+      ],
+      "evidence": [
+        "Native capture3272 projects actor0 onto west branch immediately after first fork, matching file93 minimap."
+      ]
+    },
+    {
+      "guideNo": 95,
+      "mapId": 3272,
+      "uniqueId": 1,
+      "package": "/Game/Map/Dng/09Pha/09Pha_43/GD/Dng_09Pha_43_01_GD.umap",
+      "actor": "BP_MapGimmick_FieldItem_Medal_C_3",
+      "worldPosition": [
+        10843,
+        1100,
+        10
+      ],
+      "guideScreenshots": [
+        "https://www.powerpyx.com/wp-content/uploads/final-fantasy-resonance-tablet-shards-guide-94.jpg"
+      ],
+      "evidence": [
+        "Native capture3272 projects actor1 onto middle of northern loop, matching file94 minimap and cutscene clearing."
+      ]
+    },
+    {
+      "guideNo": 96,
+      "mapId": 3280,
+      "uniqueId": 124,
+      "package": "/Game/Map/Dng/10Cry/10Cry_40/GD/Dng_10Cry_40_01_GD.umap",
+      "actor": "BP_MapGimmick_FieldItem_Medal_C_1",
+      "worldPosition": [
+        1492,
+        15295,
+        537
+      ],
+      "guideScreenshots": [
+        "https://www.powerpyx.com/wp-content/uploads/final-fantasy-resonance-tablet-shards-guide-95.jpg"
+      ],
+      "evidence": [
+        "Native capture3280 area8 projects actor124 to east branch of first fork, matching file95 minimap."
+      ]
+    },
+    {
+      "guideNo": 97,
+      "mapId": 3280,
+      "uniqueId": 125,
+      "package": "/Game/Map/Dng/10Cry/10Cry_40/GD/Dng_10Cry_40_01_GD.umap",
+      "actor": "BP_MapGimmick_FieldItem_Medal_C_4",
+      "worldPosition": [
+        7484,
+        9349,
+        505.0001
+      ],
+      "guideScreenshots": [
+        "https://www.powerpyx.com/wp-content/uploads/final-fantasy-resonance-tablet-shards-guide-96.jpg"
+      ],
+      "evidence": [
+        "Native capture3280 area8 projects actor125 to western upper sidebranch, matching file96 minimap."
+      ]
+    },
+    {
+      "guideNo": 98,
+      "mapId": 3280,
+      "uniqueId": 126,
+      "package": "/Game/Map/Dng/10Cry/10Cry_40/GD/Dng_10Cry_40_01_GD.umap",
+      "actor": "BP_MapGimmick_FieldItem_Medal_C_8",
+      "worldPosition": [
+        4487,
+        -62438,
+        931.0001
+      ],
+      "guideScreenshots": [
+        "https://www.powerpyx.com/wp-content/uploads/final-fantasy-resonance-tablet-shards-guide-97.jpg"
+      ],
+      "evidence": [
+        "Unique remaining crystal-tower actor126 is spatially in translucent-bridge region. Projection lies outside solid capture6 bounds because invisible walkways are not drawn; actors124/125 independently match first-region screenshots."
+      ]
+    },
+    {
+      "guideNo": 99,
+      "mapId": 3010,
+      "uniqueId": 4,
+      "package": "/Game/Map/Dng/01Gra/01Gra_41/GD/Dng_01Gra_41_GD.umap",
+      "actor": "BP_MapGimmick_FieldItem_Medal_C_1",
+      "worldPosition": [
+        -1827,
+        -5745,
+        11
+      ],
+      "guideScreenshots": [
+        "https://www.powerpyx.com/wp-content/uploads/final-fantasy-resonance-tablet-shards-guide-98.jpg"
+      ],
+      "evidence": [
+        "Only shard actor in this location."
+      ]
+    }
+  ]
+}

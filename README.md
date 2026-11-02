@@ -28,8 +28,13 @@ The page loads no scripts or fonts from third-party servers.
   The positions of all 99 were taken from the game's level files.
 - A collected shard appears in the save under `Map.mapGimmick[<map>].treasureBox.treasureBoxList`
   as an entry with `ID = -1`, the actor's `UniqueID` and `IsOpen = true`.
-- For locations with several shards the game only records which IDs you have. Which ID belongs to which
-  guide number is unknown, so the page lists every candidate there.
+- Each guide number is explicitly matched to a `(map ID, UniqueID)` actor identity. The page checks each
+  identity separately, so partly completed locations list only the shards you are actually missing.
+- Unvisited maps remain hidden unless spoiler mode is enabled, including unvisited parts of a location
+  that spans several maps.
+
+The mapping and its native level, landmark, and minimap evidence are documented in
+[the mapping notes](docs/shard-mapping.md) and [the complete actor inventory](docs/shard-mapping.json).
 
 ## Credits
 
