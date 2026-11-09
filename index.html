@@ -141,6 +141,9 @@ footer{padding-block:4px 36px;font-size:13px;color:var(--muted);display:grid;gri
 @media (max-width:760px){footer{grid-template-columns:1fr}}
 .foot-col{display:grid;gap:6px}
 footer p{margin:0;max-width:80ch}
+.foot-legal{display:flex;flex-wrap:wrap;gap:8px 16px}
+.foot-legal a{color:var(--ink);text-decoration:underline;text-underline-offset:2px}
+.foot-legal a:hover{color:var(--gold)}
 .changelog h2{font-family:var(--display);font-size:14px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);margin:0 0 2px}
 .changelog ul{margin:0;padding:0;list-style:none;display:grid;gap:6px}
 .changelog li{display:grid;grid-template-columns:82px 1fr;gap:8px;align-items:baseline}
@@ -220,6 +223,7 @@ footer p{margin:0;max-width:80ch}
       <p data-t="how"></p>
       <p data-t="credits"></p>
       <p id="donate-foot" class="donate-foot" hidden><span data-t="donateNote"></span> <a id="donate-link" class="kofi" href="#" target="_blank" rel="noopener"><img src="img/kofi-cup.png" alt="Ko-fi" width="22" height="18"><span id="donate-text"></span></a></p>
+      <p class="foot-legal"><a href="https://heydave.de/impressum.html" data-t="imprint"></a><a href="https://heydave.de/datenschutz.html" data-t="privacyPolicy"></a></p>
     </div>
     <div class="foot-col changelog">
       <h2 data-t="changelogTitle"></h2>
@@ -331,6 +335,8 @@ de:{
   err_parse:f=>`${f}: Die Datei konnte nicht gelesen werden. Sie ist vielleicht beschädigt oder stammt aus einer anderen Spielversion.`,
   how:"So funktioniert es: Der Spielstand wird direkt im Browser entschlüsselt (AES) und ausgewertet. Es wird nichts hochgeladen oder gespeichert. Jeder Shard ist ein eigenes Objekt mit einer festen ID pro Karte. Der Spielstand speichert für jede ID, ob der Shard gesammelt wurde. Das Tool ordnet diese IDs anhand der Level-Dateien den Guide-Nummern zu und zeigt nur die tatsächlich fehlenden Shards.",
   credits:"Inoffizielles Fan-Tool, nicht mit Square Enix verbunden. Ortsnamen aus der deutschen Lokalisierung des Spiels. Nummerierung und Fundort-Beschreibungen nach dem Guide von PowerPyx.",
+  imprint:"Impressum",
+  privacyPolicy:"Datenschutz",
   changelogTitle:"Changelog",
   cl_20261102:"Exakte Erkennung einzelner fehlender Shards an allen Orten durch Zuordnung aller 99 Guide-Einträge zu ihren verifizierten Karten- und Objekt-IDs",
   cl_thanks:"Beitrag von",
@@ -362,6 +368,8 @@ en:{
   err_parse:f=>`${f}: The file could not be read. It may be damaged or come from a different game version.`,
   how:"How it works: the save is decrypted (AES) and read right here in your browser. Nothing is uploaded or stored. Each shard is a separate object with a fixed ID within its map. The save records whether each ID has been collected. The tool matches these IDs to guide numbers using the game's level files and shows only the shards you are actually missing.",
   credits:"Unofficial fan tool, not affiliated with Square Enix. Location names from the game's localization. Numbering and spot descriptions follow the PowerPyx guide.",
+  imprint:"Imprint",
+  privacyPolicy:"Privacy",
   changelogTitle:"Changelog",
   cl_20261102:"Exact missing-shard detection across all locations by mapping all 99 guide entries to their verified map and actor IDs",
   cl_thanks:"contributed by",
