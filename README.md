@@ -1,4 +1,4 @@
-# Tablet Shard Finder
+# Final Fantasy Resonance Tablet Shard Finder
 
 Demo: https://heydavee.github.io/ffr-shard-finder/
 
@@ -48,6 +48,6 @@ The mapping and its native level, landmark, and minimap evidence are documented 
 
 ## Todos
 
-Testing PS5 and Switch save files.
+Testing PS5 and Switch save files. I heard that PS5 works but never got a file to test it myself. Feel free to send me one :)
 
 [MIT](LICENSE)
